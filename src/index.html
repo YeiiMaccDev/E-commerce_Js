@@ -1,16 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <title>Webpack</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <title>Webpack</title>
 </head>
+
 <body>
-    <!-- Comentario -->
-    <h1>Ecommerce YeiiMaccDev</h1>
-    <img src="assets/img/logo.png" alt="Logo YeiiMaccDev">
+
+  <header>
+    <div class="navbar-site">
+      <nav class="navbar-site__navbar">
+        <a href="/" class="navbar-site__logo">
+          <img src="assets/img/logo.png" class="navbar-site__logo-img" alt="Logo YeiiMaccDev">
+          <strong class="navbar-site__logo-strong">YeiiMaccDev</strong>
+        </a>
+
+        <!-- <div class="navbar-site__busqueda">
+              <input i class="navbar-site__busqueda-input outline-none" type="text" placeholder="Qué deseas buscar?" />
+            </div> -->
+
+        <ul class="navbar-site__list">
+          <li class="navbar-site__item navbar-site__item-busqueda">
+            <div class="navbar-site__busqueda">
+              <input i class="navbar-site__busqueda-input outline-none" type="text" placeholder="Qué deseas buscar?" />
+              <button class="navbar-site__button">Buscar</button>
+            </div>
+          </li>
+          <li class="navbar-site__item">
+            <a class="navbar-site__enlace navbar-site__active" href="#ofertas">Ofertas</a>
+          </li>
+          <li class="navbar-site__item">
+            <a class="navbar-site__enlace" href="#computadoras">Computadoras</a>
+          </li>
+          <li class="navbar-site__item">
+            <a class="navbar-site__enlace" href="#celulares">Celulares</a>
+          </li>
+          <li class="navbar-site__item">
+            <a class="navbar-site__enlace" href="#consolas">Consolas</a>
+          </li>
+          <li class="navbar-site__item btn btn-login">
+            <a class="navbar-site__enlace" href="login.html">
+              <button class="navbar-site__button">Login</button>
+            </a>
+          </li>
+        </ul>
+
+        <button class="navbar-site__toggler">
+          <span class="navbar-site__toggler__span"></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
 
 </body>
+
 </html>

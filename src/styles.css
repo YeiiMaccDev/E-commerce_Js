@@ -1,8 +1,37 @@
-html, body {
-    margin: 0;
-    background-color: #ffffff;
+
+/*---------------Variables---------------*/
+:root {
+    --bg-color: #fff;
+    --bg-color-input: #ebebeb;
+    --primary-color: #ffbf00;
+    --primary-color-light: #ffcc33;
+    --secondary-color: #00C9C8;
+    --input-placeholder: #d4d4d4;
+    --input-bg: #efefef;
+    --texto-destaque: #ffff;
+    --azul-destaque: #2a7ae4;
+    --bg-contato: #eaf2fd;
 }
 
-img { 
-    width: 150px;
+/*---------------Normaliza - Reset-CSS---------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Releway", sans-serif;
 }
+
+body {
+    background-color: var(--bg-color);
+    scroll-behavior: smooth;
+}
+
+
+/*--------------- Input ---------------*/
+.outline-none {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+
+/*--------------- Botones ---------------*/
