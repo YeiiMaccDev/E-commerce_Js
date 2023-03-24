@@ -62,15 +62,6 @@
     background: var(--bg-color-input);
 }
 
-.navbar-site__button {
-    background-color: var(--primary-color);
-    color: #000;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .navbar-site__list {
     margin: 0;
     padding: 0;
