@@ -2,6 +2,7 @@
 .banner-home {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: #fff;
 }
 
@@ -94,4 +95,90 @@
 
 
 
-/* --------------- banner home ---------------  */
+/* --------------- banner offers ---------------  */
+.banner-offers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+  }
+
+  .banner-offers__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .banner-offers__image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 50%;
+    max-width: 500px;
+    max-height: 500px;
+    padding: 1rem;
+
+    border-radius: 50%;
+    background-color: #fff;
+
+    animation: offer 10s infinite;
+    transition: all 1s ease-in-out;
+  }
+
+  .banner-offers__image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  .banner-offers__content {
+    width: 50%;
+    flex: 1;
+    margin: 0 20px;
+    z-index: 20;
+    /* text-align: center; */
+  }
+
+  .offer-current-month {
+    color: #fff;
+  }
+
+  @keyframes offer {
+    0% {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    60% {
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    100% {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .banner-offers__container {
+      flex-direction: column;
+    }
+
+    .banner-offers__image {
+      width: 100%;
+    }
+
+    .banner-offers__content {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  @media screen and (min-width: 800px) and (min-height: 1000px) {
+    .banner-offers {
+      min-height: 50vh;
+    }
+  }
