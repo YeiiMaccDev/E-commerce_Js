@@ -1,0 +1,97 @@
+/* --------------- banner home ---------------  */
+.banner-home {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.banner-home__circulo {
+    width: 200px;
+    height: 200px;
+    top: -25px;
+    left: -100px;
+
+    transition: all 1s ease-in-out;
+    animation: 20s flotarDiagonal infinite;
+}
+
+.banner-home__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.banner-home__image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 50%;
+    padding: 1rem;
+}
+
+.banner-home__image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    /* animation: flotar 16s infinite; */
+    transition: all 1s ease-in-out;
+}
+
+.banner-content {
+    width: 50%;
+    flex: 1;
+    margin: 0 20px;
+    z-index: 20;
+    padding: .5rem 0;
+}
+
+.banner-title {
+    font-size: 3rem;
+}
+
+.banner-description {
+    font-size: 1.5rem;
+    padding: .5rem 0;
+}
+
+.banner-btn {
+    margin: auto;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .banner-home__container {
+        flex-direction: column-reverse;
+    }
+
+    .banner-home__image {
+        width: 100%;
+    }
+
+    .banner-content {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+
+    .banner-title {
+        font-size: 2rem;
+    }
+
+    .banner-description {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (min-width: 800px) and (min-height: 1000px) {
+    .banner-home {
+        min-height: 50vh;
+    }
+}
+
+
+
+/* --------------- banner home ---------------  */
