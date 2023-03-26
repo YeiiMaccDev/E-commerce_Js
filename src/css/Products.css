@@ -92,11 +92,25 @@
 
 .product__title {
     margin: .5rem 0; 
+
+    /* truncateTextByLines(2lines) */
+    font-size: 1.5rem; /* text font size */
+    max-height: calc(1.5em * 2);  /* maximum height of 3 lines */
+    overflow: hidden; /* hide content that exceeds maximum height */
+    line-height: 1.5em; /* line height of text */
+
 }
 
 
 .product__description {
     margin: .5rem 0;
+
+     /* truncateTextByLines(4lines) */
+     font-size: 1.2rem; /* text font size */
+     max-height: calc(1.2em * 4);  /* maximum height of 3 lines */
+     overflow: hidden; /* hide content that exceeds maximum height */
+     line-height: 1.2em; /* line height of text */
+ 
 }
 
 .product__precios {
