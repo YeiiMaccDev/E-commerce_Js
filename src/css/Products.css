@@ -170,6 +170,20 @@
     width: 70%;
 }
 
+.see-more-content {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+
+}
+
+.see-more {
+    padding: .5rem;
+    font-size: 1.2rem;
+    color: #000;
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 800px) {
     .product__container {
         flex-direction: column;
