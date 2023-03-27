@@ -1,0 +1,177 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "category": "computadoras",
+      "reference": "AN515-57-532W",
+      "name": "Portátil Gamer ACER 15.6 - Core i5.",
+      "imageUrl": "computadoras/AN515-57-532W",
+      "images":["1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+      "price": "4599000",
+      "discount": 0,
+      "description": "Acer te invita a disfrutar la inigualable Nitro 5 la cual cuenta con un sonido más nítido gracias a sus altavoces dobles de 2 W. Con DTS:X® Ultra, que pueden emitir un entorno sonoro espacial en 3D, lo que te permitirá escuchar de dónde vienen tus oponentes con una precisión excelente. Además podrás contar con una abundante gama de puertos, como HDMI y el más reciente estándar USB 3.1 con compatibilidad para la 1ra y 2da generación. de igual manera contaras con una Pantalla FHD- tecnologia IPS colores mas vibrantes y video de alta calidad. Comprala aquí."
+    },
+    {
+      "id": 2,
+      "category": "computadoras",
+      "reference": "16-d0504la",
+      "name": "Portátil Gamer Victus HP 16.1 - Core i5.",
+      "imageUrl": "computadoras/16-d0504la",
+      "images":["1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+      "price": "5399000",
+      "discount": 0,
+      "description": "El portátil gaming Victus by HP tiene todo lo que necesita para jugar y gestionar tus tareas diarias respetando el medio ambiente gracias a los materiales reciclados de origen oceánico y plástico posconsumo, que lo integran. Manten la temperatura ideal en cada juego con el sistema de refrigeración mejorado y lleva tu experiencia de juego más allá controlando ajustes de rendimiento, opciones de iluminación y más gracias a OMEN Gaming Hub. Perfecto para los gamers orgullosos!"
+    },{
+      "id": 3,
+      "category": "computadoras",
+      "reference": "82RB00P9LM",
+      "name": "Portátil Gamer LENOVO 15.6 - Core i7.",
+      "imageUrl": "computadoras/82RB00P9LM",
+      "images":["1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+      "price": "11999000",
+      "discount": 10,
+      "description": "Con el portátil gamer LENOVO Legión 5 color gris, disfruta de un rendimiento para Juegos de élite en un dispositivo delgado y liviano con una duración de la batería increíble gracias a los nuevos procesadores Intel, disfruta del máximo rendimiento gracias a su gráficos NVIDIA GeForce RTX para gamer y creadores. ofrece los imágenes más realistas, con nuevas funciones de vanguardia y el poder de la inteligencia artificial es la opción ideal para ascender en tu juegos y proyectos, lleva el tuyo ahora! Comprala aquí."
+    },
+    {
+      "id": 4,
+      "category": "computadoras",
+      "reference": "GU603ZE-K8026W",
+      "name": "Portátil Gamer ROG Zephyrus 16 - Core i7.",
+      "imageUrl": "computadoras/GU603ZE-K8026W",
+      "images":["1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+      "price": "21999000",
+      "discount": 55,
+      "description": "El ASUS ROG ,Zephyrus ,M16 ofrece una gran experiencia desde la creación de contenido de nivel profesional hasta el juego competitivo. Su CPU Intel Core i7 de 12va Generación de procesadores Intel Core combina P-cores ,para elevar tu experiencia de juego con E-cores ,para manejar todo lo demás, diseñado para ser el Rey del ,Gaming. GPU GeForce RTX 3050Ti que te brindará una gran experiencia de uso. Su pantalla está validada por Pantone WQXGA 165Hz 3ms enmarcada por los primeros biseles súper estrechos de 4 lados para una relación pantalla-cuerpo expansiva del 94%. ,No esperes más!"
+    },
+    {
+      "id": 5,
+      "category": "computadoras",
+      "reference": "FX517ZC-HN048W",
+      "name": "Portátil ASUS TUF Dash 15,6 - Core i5.",
+      "imageUrl": "computadoras/FX517ZC-HN048W",
+      "images":["1.jpg", "2.jpg", "3.jpg", "4.jpg"],
+      "price": "7899000",
+      "discount": 20,
+      "description": "Con el ASUS TUF Dash F15 negro disfruta una experiencia gaming avanzada en un chasis superdelgado.Cuenta con una CPU Intel Core i5, GPU GeForce RTX 3050 y una pantalla de 144 Hz con una fluidez gráfica excelente. Su chasis TUF MIL-STD está preparado para resistir los golpes diarios. Su batería de hasta 16,6 horas te permiten realizar más tareas. Los dos altavoces con cuatro recortes producen un audio fuerte e inmersivo. Además, su sistema antipolvo, ventiladores n-Blade, disipadores retiran el calor de los componentes principales y lo disipan para que trabajen a plena capacidad. Llévalo ya!"
+    },
+    {
+      "id": 6,
+      "category": "celulares",
+      "reference": "REDMI-Note-11",
+      "name": "REDMI Note 11.",
+      "imageUrl": "celulares/REDMI-Note-11",
+      "images":["1.jpg", "2.jpg", "3.jpg"],
+      "price": "1199900",
+      "discount": 10,
+      "description": "Con el REDMI Note 11 tendrás un rendimiento único y un gran ahorro de batería gracias a sus 6 nm, esto significa que tendrás la posibilidad de utilizarlo sin demora mientras que el equilibrio energético te hará sentir que su energía no tiene fin. Además, su batería de 5000 mAh posee un sistema de carga rápida que permite que lo cargues de 0 a 100% en aprox 58 minutos, sumérgete en una experiencia audiovisual magnifica gracias a su pantalla AMOLED que te ofrece colores vivos y naturales junto con su altavoz doble que te permitirá disfrutar de contenidos con una calidad optima ¡Ven por el tuyo!"
+    },
+    {
+      "id": 7,
+      "category": "celulares",
+      "reference": "iPhone-13",
+      "name": "iPhone 13.",
+      "imageUrl": "celulares/iPhone-13",
+      "images":["1.jpg", "2.jpg", "3.jpg"],
+      "price": "420900",
+      "discount": 10,
+      "description": "Diseñamos una arquitectura completamente nueva y giramos los lentes 45 grados. De esta manera, pudimos incluir nuestro sistema de dos cámaras más avanzado y un sensor de cámara gran angular más grande. Además, hicimos lugar para nuestra estabilización óptica de imagen por desplazamiento de sensor. Y equipamos la cámara ultra gran angular con un sensor más rápido."
+    },
+    {
+      "id": 8,
+      "category": "celulares",
+      "reference": "Galaxy-A22",
+      "name": "SAMSUNG Galaxy A22.",
+      "imageUrl": "celulares/Galaxy-A22",
+      "images":["1.jpg", "2.jpg", "3.jpg"],
+      "price": "1399090",
+      "discount": 50,
+      "description": "Mantente siempre conectado con tu Galaxy A22 5G Verde que continúa, pero ahora con el beneficio de ser compatible con la tecnología 5G, cuando llegue el tiempo, tu smartphone estará totalmente preparado para trabajar a una excelente velocidad. Disfruta de su batería de 5000 mAh con carga rápida para tus actividades al aire libre. Cuenta con una memoria RAM de 4GB y alto almacenamiento de 128GB que te permite disfrutar tus aplicaciones ágilmente y llevar contigo la información que necesites."
+    },
+    {
+      "id": 9,
+      "category": "celulares",
+      "reference": "MOTOROLA-G22",
+      "name": "MOTOROLA G22.",
+      "imageUrl": "celulares/MOTOROLA-G22",
+      "images":["1.jpg", "2.jpg", "3.jpg"],
+      "price": "1199900",
+      "discount": 10,
+      "description": "Mira cómo tu visión cobra vida con el Moto G22 Azul. Captura cada uno de los momentos con un brillante sistema de cámara cuádruple de 50MPX. Míralo todo en una pantalla Max Visión fluida de 6,5 y tasa de refresco de 90Hz. Descubre todo lo que es posible. ¡Consigue el tuyo acá!"
+    },
+    {
+      "id": 10,
+      "category": "celulares",
+      "reference": "OPPO-A57",
+      "name": "OPPO A57.",
+      "imageUrl": "celulares/OPPO-A57",
+      "images":["1.jpg", "2.jpg", "3.jpg"],
+      "price": "932900",
+      "discount": 10,
+      "description": "El Oppo A57 negro cuenta con un diseño innovador y cuerpo curvo 2D permitiendo un mejor agarre, carga rápida de 33W SUPERVOOC, disfruta del uso de aplicaciones sin contratiempos, además cuenta con altavoces duales para un sonido de mayor potencia. Su sistema ColorOS, cuenta con funciones exclusivas para el usuario y mayor seguridad garantizando la protección de datos almacenados en el smartphone. ¡Lleva el tuyo ahora!"
+    },
+    {
+      "id": 11,
+      "category": "consolas",
+      "reference": "HAD-S-KABLJ ",
+      "name": "NINTENDO SWITCH™.",
+      "imageUrl": "consolas/HAD-S-KABLJ",
+      "images":["1.jpg", "2.jpg", "3.jpg"],
+      "price": "2142000",
+      "discount": 15,
+      "description": "NINTENDO SWITCH™ con los controles Joy-Con™ azul neón y rojo neón. Incluye juego descargable Mario Kart 8 Deluxe."
+    },
+    {
+      "id": 12,
+      "category": "consolas",
+      "reference": "RRS-00004",
+      "name": "XBOX Series S.",
+      "imageUrl": "consolas/RRS-00004",
+      "images":["1.jpg", "2.jpg", "3.jpg"],
+      "price": "1949900",
+      "discount": 0,
+      "description": "Solo digital , Todo de nueva generación: Pásate a lo digital con la Xbox Series S y crea una biblioteca de juegos digitales. Tus juegos, partidas guardadas y copias de seguridad están a salvo en la nube. Además, disfruta de la capacidad de reservar y preinstalar los juegos disponibles próximamente para que puedas jugar a ellos en el momento de su lanzamiento."
+    },
+    {
+      "id": 13,
+      "category": "consolas",
+      "reference": "HDH-S-BAZAA",
+      "name": "NINTENDO SWITCH Lite.",
+      "imageUrl": "consolas/HDH-S-BAZAA",
+      "images":["1.jpg", "2.jpg", "3.jpg"],
+      "price": "1419000",
+      "discount": 0,
+      "description": "Les presentamos la consola Nintendo Switch™ Lite, una nueva versión de la consola Nintendo Switch que está optimizada para el juego personal y portátil. La consola Nintendo Switch Lite es una consola Nintendo Switch pequeña y ligera a un gran precio. Con una cruz de control incorporada y un elegante diseño, esta consola es perfecta para jugar en el camino. La consola Nintendo Switch Lite es compatible con populares juegos, Si estás buscando una consola de juegos que sea solo para ti, la consola Nintendo Switch Lite está lista para salir contigo a todas partes."
+    },
+    {
+      "id": 14,
+      "category": "consolas",
+      "reference": "PS4",
+      "name": "PS4 1TB - 1 Control Inalambrico.",
+      "imageUrl": "consolas/PS4",
+      "images":["1.jpg", "2.jpg", "3.jpg"],
+      "price": "2499900",
+      "discount": 30,
+      "description": "¡Juegos increíbles, entrenamiento sin fin!. La consola PS4 ofrece una potenica de juego impresionante, entretenimiento increíble y tecnología de HRD intenso que tiene un disco duro de 1TB para que disfrutes los mejores juegos, tu música favorita y mucho más. Incluye Juego PS4 God Of War Ragnarok. Santa Monica Studio trae la secuela del aclamado God of War para PS4 (2018)."
+    },
+    {
+      "id": 15,
+      "category": "consolas",
+      "reference": "PS5",
+      "name": "PS5 825GB - 1 Control Dualsense.",
+      "imageUrl": "consolas/PS5",
+      "images":["1.jpg", "2.jpg", "3.jpg"],
+      "price": "4349900",
+      "discount": 25,
+      "description": "Obtén el Voucher Digital Pack PlayStation®5 + God Of War Ragnarok. Kratos y Atreus deberán viajar a cada uno de los nueve reinos en busca de respuestas para prepararse para la vaticinada batalla que acabará con el mundo.Juntos, Kratos y Atreus se aventuran en cada uno de los nueve reinos en busca de respuestas mientras las fuerzas de Asgard se preparan para la guerra."
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Lider Supremo",
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "type": "admin"
+    }
+  ]
+}
