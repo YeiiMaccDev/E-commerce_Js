@@ -7,7 +7,7 @@
     font-size: 2rem;
 }
 
-.offer-counter {
+.countdown-offer {
     color: #ff0000;
     font-size: 1.2rem;
 }
@@ -104,6 +104,7 @@
 
 .product__description {
     margin: .5rem 0;
+    text-align: justify;
 
      /* truncateTextByLines(4lines) */
      font-size: 1.2rem; /* text font size */

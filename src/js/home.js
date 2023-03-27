@@ -1,5 +1,6 @@
 import { getCurrentMonth } from "./utils/getCurrentMonth.js";
 import { truncateTextByLines } from "./utils/truncateTextByLines.js";
+import { offerCountdown } from "./utils/offerCountdown.js";
 
 // ----- Banner-offers
 /* Getting the current month and displaying it on the page banner-offers. */
@@ -17,3 +18,9 @@ truncateTextByLines(titleProducts, 2);
 truncateTextByLines function, truncating the description to 4 lines. */
 const descriptionProducts = document.querySelector('.product__description');
 truncateTextByLines(descriptionProducts, 4);
+
+// ----- Countdown to expiration of the offer.
+const countdownOfferHTML = document.querySelector('#countdown-offer');
+let deadlineDate = new Date();
+deadlineDate.setHours(22, 0, 0, 0); // 10 p.m.
+offerCountdown(countdownOfferHTML, deadlineDate);
