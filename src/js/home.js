@@ -24,3 +24,24 @@ const countdownOfferHTML = document.querySelector('#countdown-offer');
 let deadlineDate = new Date();
 deadlineDate.setHours(22, 0, 0, 0); // 10 p.m.
 offerCountdown(countdownOfferHTML, deadlineDate);
+
+
+// ----- Favorite icon - btn.
+/**
+ * When the user clicks on the icon, 
+ * toggle the class of the icon between 'fa-regular' and 'fa-solid'.
+ * @param icon - the icon element that you want to toggle.
+ */
+const toggleFavorite = (icon) => {
+    icon.classList.toggle('fa-regular');
+    icon.classList.toggle('fa-solid');
+}
+
+/** Adding an event listener to each button. 
+ * When the button is clicked, it will call the toggleFavoritefunction. 
+*/
+const btnsIconFavorite = document.querySelectorAll('.btn-favorite');
+btnsIconFavorite.forEach(btn => {
+    const iconFavorite = btn.querySelector('.icon-favorite');
+    btn.addEventListener('click', () => toggleFavorite(iconFavorite));
+});
