@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Descubre los mejores productos electrónicos en YeiiMaccDev. Encuentra la última tecnología en dispositivos móviles, laptops, accesorios y mucho más. ¡Compra ahora y disfruta de envío rápido y seguro!">
   <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 
   <!-- Icons -->
@@ -19,7 +21,13 @@
     <div class="navbar-site">
       <nav class="navbar-site__navbar">
         <a href="/" class="navbar-site__logo">
-          <img src="assets/img/logo.png" class="navbar-site__logo-img" alt="Logo YeiiMaccDev">
+          <img 
+          src="assets/img/logo60.png" 
+          class="navbar-site__logo-img"
+          width="60"
+          height="60"
+          srcset="assets/img/logo60.png 60w, assets/img/logo.png 120w"
+          alt="Logo YeiiMaccDev">
           <strong class="navbar-site__logo-strong">YeiiMaccDev</strong>
         </a>
 
@@ -27,7 +35,9 @@
           <li class="navbar-site__item navbar-site__item-busqueda">
             <div class="navbar-site__busqueda">
               <input i class="navbar-site__busqueda-input outline-none" type="text" placeholder="Qué deseas buscar?" />
-              <button class="btn btn-light navbar-site__button">Buscar</button>
+              <button class="btn btn-light navbar-site__button" aria-label="Buscar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
             </div>
           </li>
           <li class="navbar-site__item">
@@ -49,7 +59,7 @@
           </li>
         </ul>
 
-        <button class="navbar-site__toggler">
+        <button class="navbar-site__toggler"  aria-label="Menu">
           <span class="navbar-site__toggler__span"></span>
         </button>
       </nav>
@@ -71,7 +81,7 @@
           </a>
         </div>
         <div class="banner-home__image">
-          <img loading="lazy" src="assets/img/banner-home.png" alt="Banner">
+          <img src="assets/img/banner-home.png" width="500" height="500" alt="Banner">
           <!-- <figure class="ball2"></figure> -->
         </div>
       </div>
@@ -80,7 +90,7 @@
     <section class="banner-offers vh-100">
       <div class="banner-offers__container flex-center container">
         <div class="banner-offers__image">
-          <img src="assets/img/banner-offers.png" alt="Banner">
+          <img src="assets/img/banner-offers.png" width="500" height="500" alt="Banner">
         </div>
         <div class="banner-offers__content">
           <h2 class="banner-title">Mega ofertas del mes de
@@ -107,7 +117,7 @@
           <div class="product">
             <a class="product__link" href="./producto.html?id=${id}" title="Ver detalles.">
               <div class="product__image">
-                <img src="assets/img/products/computers/1.jpg" loading="lazy" alt="Imagen producto ${name}.">
+                <img src="assets/img/products/computers/1.jpg" loading="lazy"  width="250" height="250" alt="Imagen producto ${name}.">
               </div>
             </a>
             <div class="product__content">
@@ -160,7 +170,7 @@
           <div class="product">
             <a class="product__link" href="./producto.html?id=${id}" title="Ver detalles.">
               <div class="product__image">
-                <img src="assets/img/products/computers/1.jpg" loading="lazy" alt="Imagen producto ${name}.">
+                <img src="assets/img/products/computers/1.jpg" loading="lazy"  width="250" height="250" alt="Imagen producto ${name}.">
               </div>
             </a>
             <div class="product__content">
@@ -203,7 +213,7 @@
           <div class="product">
             <a class="product__link" href="./producto.html?id=${id}" title="Ver detalles.">
               <div class="product__image">
-                <img src="assets/img/products/computers/1.jpg" loading="lazy" alt="Imagen producto ${name}.">
+                <img src="assets/img/products/computers/1.jpg" loading="lazy"  width="250" height="250" alt="Imagen producto ${name}.">
               </div>
             </a>
             <div class="product__content">
@@ -246,7 +256,7 @@
           <div class="product">
             <a class="product__link" href="./producto.html?id=${id}" title="Ver detalles.">
               <div class="product__image">
-                <img src="assets/img/products/computers/1.jpg" loading="lazy" alt="Imagen producto ${name}.">
+                <img src="assets/img/products/computers/1.jpg" loading="lazy"  width="250" height="250" alt="Imagen producto ${name}.">
               </div>
             </a>
             <div class="product__content">
@@ -289,7 +299,7 @@
           <div class="product">
             <a class="product__link" href="./producto.html?id=${id}" title="Ver detalles.">
               <div class="product__image">
-                <img src="assets/img/products/computers/1.jpg" loading="lazy" alt="Imagen producto ${name}.">
+                <img src="assets/img/products/computers/1.jpg" loading="lazy"  width="250" height="250" alt="Imagen producto ${name}.">
               </div>
             </a>
             <div class="product__content">
@@ -304,10 +314,10 @@
                   sistema de refrigeración mejorado y lleva tu experiencia de juego más allá controlando ajustes de
                   rendimiento, opciones de iluminación y más gracias a OMEN Gaming Hub. Perfecto para los gamers
                   orgullosos!</p>
-              </a>          
+              </a>
               <div class="product__precios">
                 <div class="product__btn-descuento">
-                  <strong> - 10 </strong><i class="fa-sharp fa-solid fa-percent"></i> 
+                  <strong> - 10 </strong><i class="fa-sharp fa-solid fa-percent"></i>
                 </div>
                 <div class="product__precios-antes-ahora">
                   <p class="precio-antes"> Antes: $ 8.000.000 </p>
@@ -332,7 +342,7 @@
           <div class="product">
             <a class="product__link" href="./producto.html?id=${id}" title="Ver detalles.">
               <div class="product__image">
-                <img src="assets/img/products/computers/1.jpg" loading="lazy" alt="Imagen producto ${name}.">
+                <img src="assets/img/products/computers/1.jpg" loading="lazy"  width="250" height="250" alt="Imagen producto ${name}.">
               </div>
             </a>
             <div class="product__content">
@@ -347,10 +357,10 @@
                   sistema de refrigeración mejorado y lleva tu experiencia de juego más allá controlando ajustes de
                   rendimiento, opciones de iluminación y más gracias a OMEN Gaming Hub. Perfecto para los gamers
                   orgullosos!</p>
-              </a>          
+              </a>
               <div class="product__precios">
                 <div class="product__btn-descuento">
-                  <strong> - 10 </strong><i class="fa-sharp fa-solid fa-percent"></i> 
+                  <strong> - 10 </strong><i class="fa-sharp fa-solid fa-percent"></i>
                 </div>
                 <div class="product__precios-antes-ahora">
                   <p class="precio-antes"> Antes: $ 8.000.000 </p>

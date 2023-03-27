@@ -32,7 +32,7 @@
 }
 
 .navbar-site__logo-img {
-    width: 50px;
+    width: 60px;
     height: auto;
 }
 
@@ -63,6 +63,7 @@
 }
 
 .navbar-site__list {
+    height: 75px;
     margin: 0;
     padding: 0;
     list-style: none;

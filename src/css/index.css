@@ -29,16 +29,17 @@
     align-items: center;
     justify-content: center;
 
-    width: 50%;
+    width: 100%;
+    max-width: 500px;
+    max-height: 500px;
     padding: 1rem;
 }
 
 .banner-home__image img {
+  aspect-ratio: attr(width) / attr(height);
     width: 100%;
     max-width: 500px;
     height: auto;
-    /* animation: flotar 16s infinite; */
-    transition: all 1s ease-in-out;
 }
 
 .banner-content {
@@ -143,7 +144,7 @@
   }
 
   .offer-current-month {
-    color: #fff;
+    color: #000;
   }
 
   @keyframes offer {
