@@ -1,6 +1,7 @@
 import { getCurrentMonth } from "./utils/getCurrentMonth.js";
 import { truncateTextByLines } from "./utils/truncateTextByLines.js";
 import { offerCountdown } from "./utils/offerCountdown.js";
+import { getAllProducts } from "./services/products.js";
 
 // ----- Banner-offers
 /* Getting the current month and displaying it on the page banner-offers. */
@@ -45,3 +46,18 @@ btnsIconFavorite.forEach(btn => {
     const iconFavorite = btn.querySelector('.icon-favorite');
     btn.addEventListener('click', () => toggleFavorite(iconFavorite));
 });
+
+
+/**
+ * This is a test function for getAllProducts Service.
+ */
+const renderProducts = async () => {
+    try {
+        const productsList = await getAllProducts();
+        console.log(productsList);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+renderProducts();
