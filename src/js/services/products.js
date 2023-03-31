@@ -11,8 +11,12 @@ export const getAllProducts = () => {
         setTimeout(() => {
             fetch(urlAPI)
                 .then(response => response.json())
-                .then(data => resolve(data))
+                .then(data => {
+                    data.length === 0 
+                        ? reject(new Error('No existen datos.'))
+                        : resolve(data)
+                })
                 .catch(error => reject(error));
-        }, 5000);
+        }, 3000);
     });
 };

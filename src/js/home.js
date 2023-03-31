@@ -1,7 +1,7 @@
 import { getCurrentMonth } from "./utils/getCurrentMonth.js";
 import { truncateTextByLines } from "./utils/truncateTextByLines.js";
 import { offerCountdown } from "./utils/offerCountdown.js";
-import { getAllProducts } from "./services/products.js";
+import { getProductList } from "./controllers/products";
 
 // ----- Banner-offers
 /* Getting the current month and displaying it on the page banner-offers. */
@@ -53,7 +53,7 @@ btnsIconFavorite.forEach(btn => {
  */
 const renderProducts = async () => {
     try {
-        const productsList = await getAllProducts();
+        const productsList = await getProductList();
         console.log(productsList);
     } catch (error) {
         console.error(error);
