@@ -49,22 +49,43 @@ btnsIconFavorite.forEach(btn => {
 });
 
 
+
+const getAllDiscountedProducts = (productsList) => {
+    const discountedProducts = productsList.filter(({ discount }) => discount > 0);
+    if (discountedProducts.length === 0) {
+        console.warn('No se encontraron productos con descuento en getAllDiscountedProducts()');
+    }
+    return discountedProducts;
+}
+
+const getAllDiscountedProductsSortedDescending = (discountedProductsList) => {
+    return discountedProductsList.sort((a, b) => b.discount - a.discount);
+}
+
+
+
 /**
  * This is a test function to list all products.
  */
 const renderProducts = async () => {
     try {
         const productsList = await getProductList();
-
-        if (Array.isArray(productsList)) {
-            const productsOfferdiv = document.querySelector('[data-offer-products]');
-            ListProducts(productsList, productsOfferdiv);
-        } else {
-            console.error(`Error al consultar los datos, se esperaba una lista de productos.`);
+        
+        if (!Array.isArray(productsList)) {
+            throw new Error(`Error al consultar los datos, se esperaba una lista de productos.`);
         }
+
+        const discountedProductsList = getAllDiscountedProducts(productsList);
+        const discountedProductsDescendingList =  getAllDiscountedProductsSortedDescending(discountedProductsList);
+        
+
+        const productsOfferdiv = document.querySelector('[data-offer-products]');
+        ListProducts(discountedProductsDescendingList, productsOfferdiv);
+
     } catch (error) {
-        throw `Error en renderProducts(): ${error}`;
+        throw new Error(`Error en renderProducts(): ${error.message}`);
     }
 }
+
 
 renderProducts();

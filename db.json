@@ -8,7 +8,7 @@
       "imageUrl": "computadoras/AN515-57-532W",
       "images":["1.jpg", "2.jpg", "3.jpg", "4.jpg"],
       "price": "4599000",
-      "discount": 50,
+      "discount": 0,
       "description": "Acer te invita a disfrutar la inigualable Nitro 5 la cual cuenta con un sonido más nítido gracias a sus altavoces dobles de 2 W. Con DTS:X® Ultra, que pueden emitir un entorno sonoro espacial en 3D, lo que te permitirá escuchar de dónde vienen tus oponentes con una precisión excelente. Además podrás contar con una abundante gama de puertos, como HDMI y el más reciente estándar USB 3.1 con compatibilidad para la 1ra y 2da generación. de igual manera contaras con una Pantalla FHD- tecnologia IPS colores mas vibrantes y video de alta calidad. Comprala aquí."
     },
     {
@@ -95,7 +95,7 @@
       "imageUrl": "celulares/MOTOROLA-G22",
       "images":["1.jpg", "2.jpg", "3.jpg"],
       "price": "1199900",
-      "discount": 10,
+      "discount": 0,
       "description": "Mira cómo tu visión cobra vida con el Moto G22 Azul. Captura cada uno de los momentos con un brillante sistema de cámara cuádruple de 50MPX. Míralo todo en una pantalla Max Visión fluida de 6,5 y tasa de refresco de 90Hz. Descubre todo lo que es posible. ¡Consigue el tuyo acá!"
     },
     {
@@ -106,7 +106,7 @@
       "imageUrl": "celulares/OPPO-A57",
       "images":["1.jpg", "2.jpg", "3.jpg"],
       "price": "932900",
-      "discount": 10,
+      "discount": 0,
       "description": "El Oppo A57 negro cuenta con un diseño innovador y cuerpo curvo 2D permitiendo un mejor agarre, carga rápida de 33W SUPERVOOC, disfruta del uso de aplicaciones sin contratiempos, además cuenta con altavoces duales para un sonido de mayor potencia. Su sistema ColorOS, cuenta con funciones exclusivas para el usuario y mayor seguridad garantizando la protección de datos almacenados en el smartphone. ¡Lleva el tuyo ahora!"
     },
     {
