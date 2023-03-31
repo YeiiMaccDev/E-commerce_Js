@@ -2,7 +2,7 @@ import { getCurrentMonth } from "./utils/getCurrentMonth.js";
 import { truncateTextByLines } from "./utils/truncateTextByLines.js";
 import { offerCountdown } from "./utils/offerCountdown.js";
 import { getProductList } from "./controllers/products";
-import { cardProductoHTML } from "./components/CardProduct.js";
+import { ListProducts } from "./components/ListProducts.js";
 
 // ----- Banner-offers
 /* Getting the current month and displaying it on the page banner-offers. */
@@ -50,17 +50,20 @@ btnsIconFavorite.forEach(btn => {
 
 
 /**
- * This is a test function for getAllProducts Service.
+ * This is a test function to list all products.
  */
 const renderProducts = async () => {
     try {
         const productsList = await getProductList();
-        const productsOfferdiv = document.querySelector('[data-offer-products]');
-        console.log(productsList[0]);
-        productsOfferdiv.appendChild( cardProductoHTML(productsList[0]) );
-        console.log(productsList);
+
+        if (Array.isArray(productsList)) {
+            const productsOfferdiv = document.querySelector('[data-offer-products]');
+            ListProducts(productsList, productsOfferdiv);
+        } else {
+            console.error(`Error al consultar los datos, se esperaba una lista de productos.`);
+        }
     } catch (error) {
-        console.error(error);
+        throw `Error en renderProducts(): ${error}`;
     }
 }
 
