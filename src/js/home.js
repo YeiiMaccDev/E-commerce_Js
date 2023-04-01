@@ -50,6 +50,11 @@ btnsIconFavorite.forEach(btn => {
 
 
 
+/**
+ * It returns a list of products that have a discount greater than 0.
+ * @param productsList - Array of objects.
+ * @returns An array of objects of the discounted products.
+ */
 const getAllDiscountedProducts = (productsList) => {
     const discountedProducts = productsList.filter(({ discount }) => discount > 0);
     if (discountedProducts.length === 0) {
@@ -58,11 +63,29 @@ const getAllDiscountedProducts = (productsList) => {
     return discountedProducts;
 }
 
+/**
+ * Sort the discountedProductsList array in descending order by the discount property of each object in
+ * the array.
+ * @param discountedProductsList - An array of product objects containing discount.
+ * @returns an array of objects sorted by discount in descending order.
+ */
 const getAllDiscountedProductsSortedDescending = (discountedProductsList) => {
     return discountedProductsList.sort((a, b) => b.discount - a.discount);
 }
 
 
+/**
+ * It takes a list of products with the best discounted product and displays it.
+ * @param bestProductsList - An array with the product with the best discount.
+ */
+const renderBestDiscountedProduct = (bestProductsList) => {
+    try {
+        const offerProductsDiv = document.querySelector("[data-offer-products]");
+        ListProducts(bestProductsList, offerProductsDiv);
+    } catch (error) {
+        console.log('Error en renderBestDiscountedProduct():', error);
+    }
+};
 
 /**
  * This is a test function to list all products.
@@ -70,17 +93,14 @@ const getAllDiscountedProductsSortedDescending = (discountedProductsList) => {
 const renderProducts = async () => {
     try {
         const productsList = await getProductList();
-        
+
         if (!Array.isArray(productsList)) {
             throw new Error(`Error al consultar los datos, se esperaba una lista de productos.`);
         }
-
         const discountedProductsList = getAllDiscountedProducts(productsList);
-        const discountedProductsDescendingList =  getAllDiscountedProductsSortedDescending(discountedProductsList);
-        
+        const discountedProductsDescendingList = getAllDiscountedProductsSortedDescending(discountedProductsList);
 
-        const productsOfferdiv = document.querySelector('[data-offer-products]');
-        ListProducts(discountedProductsDescendingList, productsOfferdiv);
+        renderBestDiscountedProduct([ discountedProductsDescendingList[0] ]);      
 
     } catch (error) {
         throw new Error(`Error en renderProducts(): ${error.message}`);
