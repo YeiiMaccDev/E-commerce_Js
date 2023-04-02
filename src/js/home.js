@@ -87,6 +87,20 @@ const renderBestDiscountedProduct = (bestProductsList) => {
     }
 };
 
+
+/**
+ * It takes a list of discounted products sorted in descending order and displays them.
+ * @param discountedProductsDescendingList - A matrix of the discounted products ordered from highest to lowest.
+ */
+const renderDiscountedProduct = (discountedProductsDescendingList) => {
+    try {
+        const offerProductsDiv = document.querySelector("[data-discounted-products]");
+        ListProducts(discountedProductsDescendingList, offerProductsDiv);
+    } catch (error) {
+        console.log('Error en renderDiscountedProduct():', error);
+    }
+};
+
 /**
  * This is a test function to list all products.
  */
@@ -100,7 +114,8 @@ const renderProducts = async () => {
         const discountedProductsList = getAllDiscountedProducts(productsList);
         const discountedProductsDescendingList = getAllDiscountedProductsSortedDescending(discountedProductsList);
 
-        renderBestDiscountedProduct([ discountedProductsDescendingList[0] ]);      
+        renderBestDiscountedProduct([ discountedProductsDescendingList[0] ]);
+        renderDiscountedProduct(discountedProductsDescendingList);    
 
     } catch (error) {
         throw new Error(`Error en renderProducts(): ${error.message}`);
