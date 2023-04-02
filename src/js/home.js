@@ -13,13 +13,13 @@ currentMonthNameHtml.textContent = getCurrentMonth();
 // ----- Cards for each product.
 /* Selecting the element with the class product__title, and then calling the function
 truncateTextByLines function, truncating the title to 2 lines. */
-const titleProducts = document.querySelector('.product__title');
-truncateTextByLines(titleProducts, 2);
+// const titleProducts = document.querySelector('.product__title');
+// truncateTextByLines(titleProducts, 2);
 
 /* Select the element with the class product__description, and then call the function
 truncateTextByLines function, truncating the description to 4 lines. */
-const descriptionProducts = document.querySelector('.product__description');
-truncateTextByLines(descriptionProducts, 4);
+// const descriptionProducts = document.querySelector('.product__description');
+// truncateTextByLines(descriptionProducts, 4);
 
 // ----- Countdown to expiration of the offer.
 const countdownOfferHTML = document.querySelector('#countdown-offer');
@@ -101,6 +101,21 @@ const renderDiscountedProduct = (discountedProductsDescendingList) => {
     }
 };
 
+
+/**
+ * It takes a list of products and displays them.
+ * @param productsList - is an array of product objects.
+ */
+const renderAllProducts = (productsList) => {
+    try {
+        const productsDiv = document.querySelector("[data-products]");
+        ListProducts(productsList, productsDiv);
+    } catch (error) {
+        console.log('Error en renderDiscountedProduct():', error);
+    }
+};
+
+
 /**
  * This is a test function to list all products.
  */
@@ -115,7 +130,8 @@ const renderProducts = async () => {
         const discountedProductsDescendingList = getAllDiscountedProductsSortedDescending(discountedProductsList);
 
         renderBestDiscountedProduct([ discountedProductsDescendingList[0] ]);
-        renderDiscountedProduct(discountedProductsDescendingList);    
+        renderDiscountedProduct(discountedProductsDescendingList);  
+        renderAllProducts(productsList); 
 
     } catch (error) {
         throw new Error(`Error en renderProducts(): ${error.message}`);
