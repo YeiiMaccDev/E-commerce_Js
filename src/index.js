@@ -1,3 +1,6 @@
+// fontawesome
+import './assets/fontawesome/css/all.min.css';
+
 import './styles.css';
 import './css/Menu.css';
 import './css/index.css';
