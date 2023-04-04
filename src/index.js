@@ -8,3 +8,9 @@ import './css/Products.css';
 
 import './js/utils/menuResponsive.js';
 import './js/home.js';
+
+import { createFooter } from './js/components/Footer';
+
+
+
+createFooter();
