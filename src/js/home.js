@@ -4,6 +4,18 @@ import { offerCountdown } from "./utils/offerCountdown.js";
 import { getProductList } from "./controllers/products";
 import { ListProducts } from "./components/ListProducts.js";
 
+
+const productsStorage = {};
+
+
+const saveProductsInLocalStorage = (productsList) => {
+    localStorage.setItem("products", JSON.stringify(productsList) );
+}
+
+const readProductsInLocalStorage = () => {
+    return JSON.parse( localStorage.getItem("products") );   
+}
+
 // ----- Banner-offers
 /* Getting the current month and displaying it on the page banner-offers. */
 const currentMonthNameHtml = document.getElementById('current-month');
@@ -98,9 +110,13 @@ const renderProducts = async () => {
         const discountedProductsList = getAllDiscountedProducts(productsList);
         const discountedProductsDescendingList = getAllDiscountedProductsSortedDescending(discountedProductsList);
 
-        renderBestDiscountedProduct([ discountedProductsDescendingList[0] ]);
-        renderDiscountedProduct(discountedProductsDescendingList);  
-        renderAllProducts(productsList); 
+        renderBestDiscountedProduct([discountedProductsDescendingList[0]]);
+        renderDiscountedProduct(discountedProductsDescendingList);
+        renderAllProducts(productsList);
+
+
+        saveProductsInLocalStorage(productsList);
+        console.log(readProductsInLocalStorage(productsList) );
 
     } catch (error) {
         throw new Error(`Error en renderProducts(): ${error.message}`);

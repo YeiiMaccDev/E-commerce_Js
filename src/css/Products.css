@@ -18,7 +18,14 @@
     margin: auto;
 }
 
-
+.products__navbar-site__list {
+    height: 75px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
 
 
 .countdown-offer {
