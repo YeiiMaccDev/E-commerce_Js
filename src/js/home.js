@@ -58,11 +58,12 @@ const renderBestDiscountedProduct = (bestProductsList) => {
 /**
  * It takes a list of discounted products sorted in descending order and displays them.
  * @param discountedProductsDescendingList - A matrix of the discounted products ordered from highest to lowest.
+ *  @param limit - is a limited number of products.
  */
-const renderDiscountedProduct = (discountedProductsDescendingList) => {
+const renderDiscountedProduct = (discountedProductsDescendingList, limit = 4) => {
     try {
         const offerProductsDiv = document.querySelector("[data-discounted-products]");
-        ListProducts(discountedProductsDescendingList, offerProductsDiv);
+        ListProducts(discountedProductsDescendingList.slice(1, limit), offerProductsDiv);
     } catch (error) {
         console.log('Error en renderDiscountedProduct():', error);
     }
@@ -72,11 +73,12 @@ const renderDiscountedProduct = (discountedProductsDescendingList) => {
 /**
  * It takes a list of products and displays them.
  * @param productsList - is an array of product objects.
+ * @param limit - is a limited number of products.
  */
-const renderAllProducts = (productsList) => {
+const renderAllProducts = (productsList, limit = 15) => {
     try {
         const productsDiv = document.querySelector("[data-products]");
-        ListProducts(productsList, productsDiv);
+        ListProducts(productsList.slice(0, limit), productsDiv);
     } catch (error) {
         console.log('Error en renderDiscountedProduct():', error);
     }
