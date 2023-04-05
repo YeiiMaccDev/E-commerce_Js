@@ -3,18 +3,10 @@ import { truncateTextByLines } from "./utils/truncateTextByLines.js";
 import { offerCountdown } from "./utils/offerCountdown.js";
 import { getProductList } from "./controllers/products";
 import { ListProducts } from "./components/ListProducts.js";
+import { saveProductsLocalStorage } from "./controllers/LocalStorage.js";
 
 
-const productsStorage = {};
 
-
-const saveProductsInLocalStorage = (productsList) => {
-    localStorage.setItem("products", JSON.stringify(productsList) );
-}
-
-const readProductsInLocalStorage = () => {
-    return JSON.parse( localStorage.getItem("products") );   
-}
 
 // ----- Banner-offers
 /* Getting the current month and displaying it on the page banner-offers. */
@@ -115,8 +107,7 @@ const renderProducts = async () => {
         renderAllProducts(productsList);
 
 
-        saveProductsInLocalStorage(productsList);
-        console.log(readProductsInLocalStorage(productsList) );
+        saveProductsLocalStorage(productsList);
 
     } catch (error) {
         throw new Error(`Error en renderProducts(): ${error.message}`);

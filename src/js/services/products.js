@@ -17,6 +17,6 @@ export const getAllProducts = () => {
                         : resolve(data)
                 })
                 .catch(error => reject(error));
-        }, 3000);
+        }, 1000);
     });
 };
