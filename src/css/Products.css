@@ -5,6 +5,7 @@
 .products-section__title {
     padding-top: 75px;
     font-size: 2rem;
+    text-align: center;
 }
 
 .products {
@@ -18,13 +19,21 @@
     margin: auto;
 }
 
+.products__menu {
+    width: 100%;
+    margin: 1rem 0;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
 .products__navbar-site__list {
-    height: 75px;
-    margin: 0;
-    padding: 0;
     list-style: none;
-    display: flex;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-rows: auto;
     align-items: center;
+    width: 100%;
 }
 
 
