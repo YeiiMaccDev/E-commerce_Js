@@ -6,7 +6,7 @@ import { getAllProducts } from "../services/products";
  */
 export const getProductList = async () => {
     try {
-        return await getAllProducts();        
+        return await getAllProducts();
     } catch (error) {
         throw `Error al consultar productos: ${error.message}`;
     }

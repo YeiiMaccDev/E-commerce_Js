@@ -1,4 +1,5 @@
 import '../../css/components/ListProducts.css';
+import { addEventListenerAddToCart } from '../utils/addToCart';
 import { addEventListenerFavoriteIcon } from '../utils/favoriteIcon';
 import { truncateElementText } from '../utils/truncateTextByLines';
 
@@ -11,6 +12,7 @@ import { CardProductoHTML } from './CardProduct';
 const addFunctionality = (productHtml) => {
     truncateElementText(productHtml);
     addEventListenerFavoriteIcon(productHtml);
+    addEventListenerAddToCart(productHtml);
 }  
 
 /**

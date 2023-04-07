@@ -66,10 +66,10 @@ export const CardProductoHTML = (name, description, price, imageUrl, images, dis
             </div>
         </div>
         <div class="product__buttons" >
-            <button class="btn-favorite" title="Añadir a favoritos." data-addfavorite=${id}>
+            <button class="btn-favorite" title="Añadir a favoritos." data-product-id=${id}>
                 <i class="fa-regular fa-star icon-favorite"></i>
             </button>
-            <button class="btn btn-primary-color" data-addcart=${id}>
+            <button class="btn btn-primary-color add-to-cart-button" data-product-id=${id}>
                 Añadir al carrito
             </button>
         </div>
