@@ -164,9 +164,10 @@
     .navbar-site__list {
         position: absolute;
         width: 50%;
-        height: 100vh;
+        height: calc(100vh - 70px);
         left: 0;
         top: 70px;
+        bottom: 0;
         flex-direction: column;
         align-items: center;
         color: #000;
@@ -174,6 +175,20 @@
         overflow: hidden;
         transition: .8s;
         background: #fff;
+    }
+
+    .navbar-site__list::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .navbar-site__list::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 3px;
+    }
+    
+    .navbar-site__list::-webkit-scrollbar-track {
+        background-color: #dddddd;
     }
 
     .navbar-site__item {
@@ -195,8 +210,9 @@
     }
 
     .navbar-site__navbar ul.open {
-        max-height: 100vh;
+        max-height: calc(100vh - 70px);
         overflow: visible;
+        overflow-y: auto;
     }
     /* navbar mobile end */
 
