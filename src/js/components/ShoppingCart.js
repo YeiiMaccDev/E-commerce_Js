@@ -7,7 +7,7 @@ import { formatPrice } from "../utils/formatterPrices";
 const btnCartHtml = document.querySelector('#cart-btn');
 
 
-const CartItemHTML = (name, price, imageUrl, images, quantity, id) => {
+const CartItemHTML = (name, price, imageUrl, images, discount, quantity, id) => {
   const itemHTML = document.createElement("li");
   const contenido = `
         <img src="assets/img/productos/${imageUrl}/${images[0]}" class="cart__list-item-img" loading="lazy"  width="70" height="70" alt="Imagen producto ${name}.">
@@ -23,7 +23,7 @@ const CartItemHTML = (name, price, imageUrl, images, quantity, id) => {
                   <i class="fa-solid fa-plus"></i>
                 </button>
               </div>
-              <p class="cart__list-item-price">${formatPrice(price)}</p>
+              <p class="cart__list-item-price">${formatPrice( calculatePriceWithDiscount({price, discount, quantity}) )}</p>
             </div>
         </div>
         <div class="cart__list-item-actions">
@@ -52,8 +52,8 @@ const addFunctionality = (cartItemHTML) => {
 
 const ListItemCart = (productsList, cartListHtml) => {
   try {
-    productsList.forEach(({ name, price, imageUrl, images, quantity, id }) => {
-      const cartItemHTML = CartItemHTML(name, price, imageUrl, images, quantity, id);
+    productsList.forEach(({ name, price, imageUrl, images, discount, quantity, id }) => {
+      const cartItemHTML = CartItemHTML(name, price, imageUrl, images, discount, quantity, id);
       cartListHtml.appendChild(cartItemHTML);
 
       addFunctionality(cartItemHTML);
@@ -61,6 +61,16 @@ const ListItemCart = (productsList, cartListHtml) => {
   } catch (error) {
     throw `Error en renderShoppingCart: ${error}`;
   }
+}
+
+const calculatePriceWithDiscount = (product) => {
+  return (product.price * (100 - product.discount) / 100) * product.quantity;
+}
+
+const totalPrice = (productsList) => {
+  const cartTotalHTML = document.querySelector('#cart_price_total');
+  const total = productsList.reduce((totalPrice, product) => totalPrice +  calculatePriceWithDiscount(product) , 0);
+  cartTotalHTML.innerHTML = `Total:${ formatPrice(total) }`;
 }
 
 const cartQuantity = (productsList) => {
@@ -104,7 +114,7 @@ const CartHtml = () => {
       <ul class="cart__list" id="cart_list">
     
       </ul>
-      <div class="cart__list-total">
+      <div class="cart__list-total" id="cart_price_total">
         Total: $11.509.678.00
       </div>
       <button class="btn btn-primary-color cart__list-comprar ">
@@ -136,6 +146,7 @@ export const renderListItemCart = async () => {
     }
 
     cartQuantity(productsList);
+    totalPrice(productsList);
 
     ListItemCart(productsList, cartListHtml);
   } catch (error) {
