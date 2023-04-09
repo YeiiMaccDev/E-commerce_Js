@@ -63,6 +63,10 @@ const ListItemCart = (productsList, cartListHtml) => {
   }
 }
 
+const cartQuantity = (productsList) => {
+  const cartContainerHTML = document.querySelector('#cart-count');
+  cartContainerHTML.innerHTML = `${productsList.length}`;
+}
 
 const EmptyCartHtml = () => {
   const itemHTML = document.createElement("li");
@@ -130,6 +134,8 @@ export const renderListItemCart = async () => {
       console.log("Carritooooo vacio :( ")
       cartListHtml.appendChild(EmptyCartHtml());
     }
+
+    cartQuantity(productsList);
 
     ListItemCart(productsList, cartListHtml);
   } catch (error) {
