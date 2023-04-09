@@ -29,7 +29,7 @@ export const getProductCartLocalStorage = () => JSON.parse(localStorage.getItem(
  * @param product - The product parameter is an object.
  */
 export const addProductToCartLocalStorage = (product) => {
-    const cart = getCart();
+    const cart = getProductCartLocalStorage();
     localStorage.setItem("cart", JSON.stringify([...cart, product]));
 };
 
@@ -40,7 +40,7 @@ export const addProductToCartLocalStorage = (product) => {
  * @param quantity - The updated quantity of a product in the cart.
  */
 export const updateProductToCartLocalStorage = (id, quantity) => {
-    const cart = getCart();
+    const cart = getProductCartLocalStorage();
     const updatedCart = cart.map(item => {
         if (item.id === id) {
             return { ...item, quantity };
@@ -55,6 +55,6 @@ export const updateProductToCartLocalStorage = (id, quantity) => {
  * @param id - The id parameter is the identifier of the product.
  */
 export const removeProductFromCartLocalStorage = (id) => {
-    const cart = getCart().filter(item => item.id !== id);
+    const cart = getProductCartLocalStorage().filter(item => item.id !== id);
     localStorage.setItem("cart", JSON.stringify(cart));
 };

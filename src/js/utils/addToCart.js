@@ -1,7 +1,8 @@
+import { addProductToCart } from "../controllers/shoppingCart";
 
 const addToCart = (btnAddToCart) => {
     const { productId } = btnAddToCart.dataset;
-    console.log( {productId} );
+    addProductToCart(parseInt(productId));
 };
 
 

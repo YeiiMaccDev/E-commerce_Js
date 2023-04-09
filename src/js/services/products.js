@@ -20,3 +20,20 @@ export const getAllProducts = () => {
         }, 1000);
     });
 };
+
+
+export const findProductById = (id) => {
+    return new Promise((resolve, reject) => {
+        /* The fetch call will be executed after 5 seconds simulating the server response time. */
+        setTimeout(() => {
+            fetch(`${urlAPI}/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    data.length === 0 
+                        ? reject(new Error('No existe dato.'))
+                        : resolve(data)
+                })
+                .catch(error => reject(error));
+        }, 1000);
+    });
+};
