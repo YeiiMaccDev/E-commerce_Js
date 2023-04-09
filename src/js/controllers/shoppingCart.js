@@ -1,3 +1,4 @@
+import { renderListItemCart } from "../components/ShoppingCart";
 import { 
     addProductToCartLocalStorage, 
     getProductCartLocalStorage, 
@@ -16,10 +17,11 @@ export const getProductsCart = async () => {
 } 
 
 
-export const addProductToCart = async (id) => {
+export const addProductToCart = async (id, quantity = 1) => {
     try {
         const product = await getProductById(id);
-        addProductToCartLocalStorage(product);
+        addProductToCartLocalStorage({ ...product, quantity  });
+        renderListItemCart();
     } catch (error) {
         throw new Error(`Error addProductToCart: ${error.message}`);
     }   

@@ -11,7 +11,8 @@ import './js/utils/menuResponsive.js';
 import './js/home.js';
 
 import { createFooter } from './js/components/Footer';
+import { renderShoppingCart } from './js/components/ShoppingCart';
 
 
-
+renderShoppingCart();
 createFooter();

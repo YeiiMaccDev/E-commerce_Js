@@ -3,9 +3,7 @@ const navToggler = document.querySelector('.navbar-site__toggler');
 const navMenu = document.querySelector('.navbar-site__list');
 const navLinks = document.querySelectorAll('.navbar-site__enlace');
 
-// Shopping cart.
-const btnCartHtml = document.querySelector('#cart-btn');
-const DivCartHtml = document.querySelector('#cart-container');
+
 
 /**
  * When the toggler is clicked, toggle the toggler-open class on the toggler 
@@ -57,8 +55,3 @@ navLinks.forEach((link) => {
     link.addEventListener('click', () =>  navLinkClick(link) )
 });
 
-/** 
- * Add an event listener to trigger the visibility of products in the cart 
- * when a button in the cart is clicked. 
- * */
-btnCartHtml.addEventListener("click", () => DivCartHtml.classList.toggle('cart-open'));
