@@ -1,29 +1,41 @@
 import '../../css/components/ShoppingCart.css';
-import { getProductsCart } from '../controllers/shoppingCart';
+import { getProductsCart, removeProductFromCart } from '../controllers/shoppingCart';
+import { calculatePriceWithDiscount, calculatePriceWithQuantityDiscount, totalPrice } from '../utils/calculatePrice';
 
 import { formatPrice } from "../utils/formatterPrices";
 
-// BTN Shopping cart.
+// Btn Shopping cart in menu.
 const btnCartHtml = document.querySelector('#cart-btn');
 
 
+/**
+ * The CartItemHTML function creates and returns an HTML element for a cart item. 
+ * @param name - The name of the product.
+ * @param price - The price of the item.
+ * @param imageUrl - The URL path to the folder where the product images are stored.
+ * @param images - The images parameter is an array of strings that contains the names of the images
+ * associated with the product.
+ * @param discount - The discount applied to the product, expressed in integers (e.g. 20 for a 20% discount).
+ * @param quantity - The quantity represents the number of items of the product in the cart.
+ * @param id - The unique identifier of the cart item.
+ * @returns The function `CartItemHTML` returns an HTML element (`li`) that represents a product item
+ * in a shopping cart.
+ */
 const CartItemHTML = (name, price, imageUrl, images, discount, quantity, id) => {
   const itemHTML = document.createElement("li");
   const contenido = `
-        <img src="assets/img/productos/${imageUrl}/${images[0]}" class="cart__list-item-img" loading="lazy"  width="70" height="70" alt="Imagen producto ${name}.">
+        <img src="assets/img/productos/${imageUrl}/${images[0]} " class="cart__list-item-img" loading="lazy"  width="70" height="70" alt="Imagen producto ${name}.">
         <div class="cart__list-item-content">
           <h3 class="cart__list-item-title"> ${name} </h2>
             <div class="cart__list-item-datails">
               <div class="cart__list-item-quantity">
-                <button class="cart__list-item-quantity-btn minus" aria-label="Disminuir" title="Disminuir">
-                  <i class="fa-solid fa-minus"></i>
-                  </button>
-                <input type="number" value="${quantity}" class="cart__list-item-quantity-input" aria-label="Cantidad producto.">
-                <button class="cart__list-item-quantity-btn plus" aria-label="Aumentar" title="Aumentar">
-                  <i class="fa-solid fa-plus"></i>
-                </button>
+              <p class="cart__list-item-quantity">Cantidad: <strong> ${ quantity }</strong></p>
               </div>
-              <p class="cart__list-item-price">${formatPrice( calculatePriceWithDiscount({price, discount, quantity}) )}</p>
+              <p class="cart__list-item-price">
+                ${ formatPrice( 
+                  calculatePriceWithQuantityDiscount(price, discount, quantity) 
+                ) }
+              </p>
             </div>
         </div>
         <div class="cart__list-item-actions">
@@ -46,10 +58,24 @@ const CartItemHTML = (name, price, imageUrl, images, discount, quantity, id) => 
 
 
 const addFunctionality = (cartItemHTML) => {
-  console.log(cartItemHTML);
+  const btnEdit = cartItemHTML.querySelector('.edit');
+  const btnDelete = cartItemHTML.querySelector('.delete');
+
+  const { productId } = btnDelete.dataset;
+
+  btnDelete.addEventListener('click', () => {
+    removeProductFromCart(parseInt(productId));
+  });
 }
 
 
+/**
+ * This function renders a list of items in a shopping cart and adds functionality to each item.
+ * @param productsList - an array of objects containing information about the products to be displayed
+ * in the shopping cart.
+ * @param cartListHtml - An HTML element that represents the shopping cart list where the cart items
+ * will be appended.
+ */
 const ListItemCart = (productsList, cartListHtml) => {
   try {
     productsList.forEach(({ name, price, imageUrl, images, discount, quantity, id }) => {
@@ -63,21 +89,32 @@ const ListItemCart = (productsList, cartListHtml) => {
   }
 }
 
-const calculatePriceWithDiscount = (product) => {
-  return (product.price * (100 - product.discount) / 100) * product.quantity;
-}
 
-const totalPrice = (productsList) => {
-  const cartTotalHTML = document.querySelector('#cart_price_total');
-  const total = productsList.reduce((totalPrice, product) => totalPrice +  calculatePriceWithDiscount(product) , 0);
-  cartTotalHTML.innerHTML = `Total:${ formatPrice(total) }`;
-}
-
+/**
+ * This function updates the icon for the number of items in the basket displayed on the web page.
+ * @param productsList - an array of products that represents the items in the shopping cart. T
+ */
 const cartQuantity = (productsList) => {
   const cartContainerHTML = document.querySelector('#cart-count');
   cartContainerHTML.innerHTML = `${productsList.length}`;
 }
 
+
+/**
+ * This function updates the HTML of a shopping cart's total price based on the products in the cart.
+ * @param productsList - an array of objects the products in the cart.
+ */
+const totalPriceHtml = (productsList) => {
+  const cartTotalHTML = document.querySelector('#cart_price_total');
+  const total = totalPrice(productsList);
+  cartTotalHTML.innerHTML = `Total:${ formatPrice(total) }`;
+}
+
+
+/**
+ * The function creates an HTML element for an empty shopping cart.
+ * @returns returns an HTML element (`li`) that represents an empty cart item.
+ */
 const EmptyCartHtml = () => {
   const itemHTML = document.createElement("li");
   const contenido = `
@@ -91,20 +128,24 @@ const EmptyCartHtml = () => {
   return itemHTML;
 };
 
+
+/**
+ * This function adds an event listener to the shopping cart button that changes the visibility of products 
+ * in a shopping cart container.
+ */
 const eventListenerBtnCart = () => {
   const cartContainerHTML = document.querySelector('#cart_container');
-  /** 
-   * Add an event listener to trigger the visibility of products in the cart 
-   * when a button in the cart is clicked. 
-   * */
+
   btnCartHtml.addEventListener("click", () => {
     cartContainerHTML.classList.toggle('cart-open');
-    // if (cartContainerHTML.classList.contains('cart-open')) {
-    //   renderListItemCart();
-    // }
   });
 }
 
+
+/**
+ * The function creates and appends a cart container with a title, list, total price, and a button to
+ * pay.
+ */
 const CartHtml = () => {
   const mainHtml = document.querySelector("main");
 
@@ -115,7 +156,7 @@ const CartHtml = () => {
     
       </ul>
       <div class="cart__list-total" id="cart_price_total">
-        Total: $11.509.678.00
+        Total: 0.00
       </div>
       <button class="btn btn-primary-color cart__list-comprar ">
         <i class="fa-solid fa-dollar-sign"></i>
@@ -130,32 +171,37 @@ const CartHtml = () => {
 }
 
 
+/**
+ * This function renders a list of items in the shopping cart, 
+ * including the quantity and total price.
+ */
 export const renderListItemCart = async () => {
   try {
-    const cartListHtml = document.querySelector('#cart_list');
-    cartListHtml.innerHTML = '';
+    const cartListHtml = document.querySelector('#cart_list');    
     const productsList = await getProductsCart();
+    cartListHtml.innerHTML = '';
 
     if (!Array.isArray(productsList)) {
       throw new Error(`Error al consultar los datos, se esperaba una lista de productos.`);
     }
-
-    if (productsList.length === 0) {
-      console.log("Carritooooo vacio :( ")
-      cartListHtml.appendChild(EmptyCartHtml());
-    }
+   
+    productsList.length === 0
+      ? cartListHtml.appendChild(EmptyCartHtml())
+      : ListItemCart(productsList, cartListHtml)
+    
 
     cartQuantity(productsList);
-    totalPrice(productsList);
+    totalPriceHtml(productsList);
 
-    ListItemCart(productsList, cartListHtml);
   } catch (error) {
-    throw new Error(`Error en renderShoppingCart: ${error.message}`);
+    throw new Error(`Error en renderListItemCart: ${error.message}`);
   }
 }
 
 
-
+/**
+ * This function renders a shopping cart with event listeners and list items.
+ */
 export const renderShoppingCart = () => {
   CartHtml();
   eventListenerBtnCart();

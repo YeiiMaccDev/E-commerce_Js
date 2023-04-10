@@ -11,7 +11,7 @@ export const saveProductsLocalStorage = (productsList) => {
 /**
  * This function retrieves products from local storage or returns an empty array if there are none.
  */
-export const getProductsLocalStorage = () => JSON.parse( ocalStorage.getItem("products")) || [];
+export const getProductsLocalStorage = () => JSON.parse( localStorage.getItem("products")) || [];
 
 
 
