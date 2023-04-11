@@ -211,8 +211,24 @@ const EmptyCartHtml = () => {
 const eventListenerBtnCart = () => {
   const cartContainerHTML = document.querySelector('#cart_container');
 
+  /**
+   * The function sets a timeout to activate the 'cart-open' and 'cart-open-animation' classes in an HTML element, 
+   * to show and hide the shopping cart with an animation.
+   * @param timeInMilliseconds - The time in milliseconds that the function will wait before toggling
+   * the 'cart-open' and 'cart-open-animation' classes on the cartContainerHTML element.
+   */
+  const setTimeCartOpen = (timeInMilliseconds) => {
+    setTimeout(() => {
+      cartContainerHTML.classList.toggle('cart-open');
+      cartContainerHTML.classList.toggle('cart-open-animation');
+    }, timeInMilliseconds);
+  }
+
   btnCartHtml.addEventListener("click", () => {
-    cartContainerHTML.classList.toggle('cart-open');
+    cartContainerHTML.classList.toggle('cart-close-animation'); 
+    (cartContainerHTML.classList.contains('cart-open'))
+      ? setTimeCartOpen(500)
+      : setTimeCartOpen(0)
   });
 }
 
@@ -239,6 +255,7 @@ const CartHtml = () => {
       </button>
     `;
   cartContainerHTML.classList.add('cart');
+  cartContainerHTML.classList.add('cart-close-animation');
   cartContainerHTML.setAttribute('id', 'cart_container');
   cartContainerHTML.innerHTML = contenido;
 

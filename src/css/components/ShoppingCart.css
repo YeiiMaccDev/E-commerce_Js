@@ -6,15 +6,16 @@
     width: 50%;
     max-width: 600px;
     height: calc(100vh -75px);
-    display: none;
     flex-direction: column;
     align-items: center;
     color: #000;
     max-height: calc(100vh -75px);
-    transition: .2s;
     background: #fff;
-    overflow: hidden;
     z-index: 10000;
+    display: none;
+    overflow: hidden;
+    overflow-y: hidden;
+    transition: .5s;
 }
 
 .cart::-webkit-scrollbar {
@@ -35,6 +36,14 @@
     display: flex;
     overflow: visible;
     overflow-y: auto;
+}
+
+.cart-open-animation {
+    animation: slide-right-open 0.5s ease-out;
+}
+
+.cart-close-animation { 
+    animation: slide-left-close 0.5s ease-out;
 }
 
 .cart-title {
@@ -205,5 +214,27 @@
 @media screen and (max-width: 359px) {
     .cart__list-item-quantity {
         flex-direction: column;
+    }
+}
+
+
+@keyframes slide-right-open {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-left-close {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
     }
 }
