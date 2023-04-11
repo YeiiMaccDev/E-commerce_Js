@@ -1,5 +1,5 @@
 import '../../css/components/ShoppingCart.css';
-import { getProductsCart, removeProductFromCart } from '../controllers/shoppingCart';
+import { getProductsCart, removeProductFromCart, updateProductToCart } from '../controllers/shoppingCart';
 import { calculatePriceWithDiscount, calculatePriceWithQuantityDiscount, totalPrice } from '../utils/calculatePrice';
 
 import { formatPrice } from "../utils/formatterPrices";
@@ -28,13 +28,13 @@ const CartItemHTML = (name, price, imageUrl, images, discount, quantity, id) => 
         <div class="cart__list-item-content">
           <h3 class="cart__list-item-title"> ${name} </h2>
             <div class="cart__list-item-datails">
-              <div class="cart__list-item-quantity">
-              <p class="cart__list-item-quantity">Cantidad: <strong> ${ quantity }</strong></p>
+              <div class="cart__list-item-quantity" id="cart-item-quantity">
+              <p class="cart__list-item-quantity-p">Cantidad: <strong> ${quantity}</strong></p>
               </div>
               <p class="cart__list-item-price">
-                ${ formatPrice( 
-                  calculatePriceWithQuantityDiscount(price, discount, quantity) 
-                ) }
+                ${formatPrice(
+    calculatePriceWithQuantityDiscount(price, discount, quantity)
+  )}
               </p>
             </div>
         </div>
@@ -57,15 +57,90 @@ const CartItemHTML = (name, price, imageUrl, images, discount, quantity, id) => 
 };
 
 
-const addFunctionality = (cartItemHTML) => {
+/**
+ * The function adds functionality buttons to a quantity div for updating the quantity of a product in
+ * a cart.
+ * @param quantityDiv - a Html element that contains the quantity input and buttons for a specific
+ * product in a shopping cart.
+ * @param productId - The ID of the product that the functionality buttons are associated with.
+ */
+const addFunctionalityBtns = (quantityDiv, productId) => {
+  const quantityInput = quantityDiv.querySelector('.input-update-item');
+  const btnMinus = quantityDiv.querySelector('.btn-minus-item');
+  const btnPlus = quantityDiv.querySelector('.btn-plus-item');
+  const btnUpdate = quantityDiv.querySelector('.btn-update-item');
+
+  const updateQuantity = (amount, quantityLimit = 10) => {
+    const quantityTemp = parseInt(quantityInput.value) + amount;
+    if (quantityTemp >= 1 && quantityTemp <= quantityLimit) {
+      quantityInput.value = quantityTemp;
+    }
+  };
+
+  const validateUpdate = (quantityLimit = 10) => {
+    const quantityUpdate = parseInt(quantityInput.value);
+    if (quantityUpdate >= 1 && quantityUpdate <= quantityLimit) {
+      updateProductToCart(productId, quantityUpdate);
+    } else {
+      alert(`Por favor, ingrese solo dígitos numéricos entre 1 y ${quantityLimit}`);
+      quantityInput.value = 10;
+    }
+  };
+
+  btnMinus.addEventListener('click', () => updateQuantity(-1));
+
+  btnPlus.addEventListener('click', () => updateQuantity(1));
+
+  btnUpdate.addEventListener('click', () => validateUpdate());
+}
+
+/**
+ * The function edits the quantity of a product in the cart HTML and adds functionality to the
+ * corresponding buttons.
+ * @param cartItemHTML - A HTML element that represents a single item in the shopping cart.
+ * @param productId - The ID of the product in the cart that needs its quantity updated.
+ * @param quantity - The current quantity of products of that item in the cart.
+ */
+const editQuantityInCartHtml = (cartItemHTML, productId, quantity) => {
+  const quantityDiv = cartItemHTML.querySelector('#cart-item-quantity');
+  quantityDiv.innerHTML = '';
+  const contenido = `
+      <div class="cart__list-item-quantity-btns">
+        <button class="cart__list-item-quantity-btn minus btn-minus-item" aria-label="Disminuir" title="Disminuir">
+          <i class="fa-solid fa-minus"></i>
+          </button>
+        <input type="number" value="${quantity}"  data-product-id=${productId} step="1" min="1" max="10" 
+        pattern="^[0-9]*$" title="Por favor, ingrese solo dígitos numéricos" aria-label="Cantidad producto."
+        class="cart__list-item-quantity-input input-update-item">
+        <button class="cart__list-item-quantity-btn plus btn-plus-item" aria-label="Aumentar" title="Aumentar">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+      <button class="cart__list-item-quantity-btn check btn-update-item" data-product-id=${productId} aria-label="Actualizar" title="Actualizar">
+        <i class="fa-solid fa-check"></i> <strong class="update-item-strong"> Actualizar </strong>
+      </button>
+  `;
+  quantityDiv.innerHTML = contenido;
+
+  addFunctionalityBtns(quantityDiv, productId);
+}
+
+
+/**
+ * This function adds functionality to the edit and delete buttons in a cart item HTML element.
+ * @param cartItemHTML - It is a reference to the HTML element that represents a single item in the
+ * shopping cart.
+ * @param quantity - The quantity parameter is a number that represents the quantity of a product in
+ * the cart. 
+ */
+const addFunctionalityBtnsEditDelete = (cartItemHTML, quantity) => {
   const btnEdit = cartItemHTML.querySelector('.edit');
   const btnDelete = cartItemHTML.querySelector('.delete');
 
-  const { productId } = btnDelete.dataset;
+  const productId = parseInt(btnDelete.dataset.productId);
 
-  btnDelete.addEventListener('click', () => {
-    removeProductFromCart(parseInt(productId));
-  });
+  btnEdit.addEventListener('click', () => editQuantityInCartHtml(cartItemHTML, productId, quantity));
+  btnDelete.addEventListener('click', () => removeProductFromCart(productId));
 }
 
 
@@ -82,7 +157,7 @@ const ListItemCart = (productsList, cartListHtml) => {
       const cartItemHTML = CartItemHTML(name, price, imageUrl, images, discount, quantity, id);
       cartListHtml.appendChild(cartItemHTML);
 
-      addFunctionality(cartItemHTML);
+      addFunctionalityBtnsEditDelete(cartItemHTML, quantity);
     });
   } catch (error) {
     throw `Error en renderShoppingCart: ${error}`;
@@ -107,7 +182,7 @@ const cartQuantity = (productsList) => {
 const totalPriceHtml = (productsList) => {
   const cartTotalHTML = document.querySelector('#cart_price_total');
   const total = totalPrice(productsList);
-  cartTotalHTML.innerHTML = `Total:${ formatPrice(total) }`;
+  cartTotalHTML.innerHTML = `Total:${formatPrice(total)}`;
 }
 
 
@@ -177,18 +252,18 @@ const CartHtml = () => {
  */
 export const renderListItemCart = async () => {
   try {
-    const cartListHtml = document.querySelector('#cart_list');    
+    const cartListHtml = document.querySelector('#cart_list');
     const productsList = await getProductsCart();
     cartListHtml.innerHTML = '';
 
     if (!Array.isArray(productsList)) {
       throw new Error(`Error al consultar los datos, se esperaba una lista de productos.`);
     }
-   
+
     productsList.length === 0
       ? cartListHtml.appendChild(EmptyCartHtml())
       : ListItemCart(productsList, cartListHtml)
-    
+
 
     cartQuantity(productsList);
     totalPriceHtml(productsList);
