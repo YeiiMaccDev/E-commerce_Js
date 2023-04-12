@@ -1,5 +1,5 @@
 import '../../css/components/ShoppingCart.css';
-import { getProductsCart, removeProductFromCart, updateProductToCart } from '../controllers/shoppingCart';
+import { getProductsCart, removeAllProductsFromCart, removeProductFromCart, updateProductToCart } from '../controllers/shoppingCart';
 import { calculatePriceWithDiscount, calculatePriceWithQuantityDiscount, totalPrice } from '../utils/calculatePrice';
 
 import { formatPrice } from "../utils/formatterPrices";
@@ -65,7 +65,7 @@ const CartItemHTML = (name, price, imageUrl, images, discount, quantity, id) => 
  * product in a shopping cart.
  * @param productId - The ID of the product that the functionality buttons are associated with.
  */
-const addFunctionalityBtns = (quantityDiv, productId) => {
+const addFunctionalityQuantityBtns = (quantityDiv, productId) => {
   const quantityInput = quantityDiv.querySelector('.input-update-item');
   const btnMinus = quantityDiv.querySelector('.btn-minus-item');
   const btnPlus = quantityDiv.querySelector('.btn-plus-item');
@@ -136,7 +136,7 @@ const editQuantityInCartHtml = (cartItemHTML, productId, quantity) => {
   `;
   quantityDiv.innerHTML = contenido;
 
-  addFunctionalityBtns(quantityDiv, productId);
+  addFunctionalityQuantityBtns(quantityDiv, productId);
 }
 
 
@@ -154,7 +154,7 @@ const addFunctionalityBtnsEditDelete = (cartItemHTML, quantity) => {
   const productId = parseInt(btnDelete.dataset.productId);
 
   const deleteItem = async (productId) => {
-    if (await AlertToConfirmDelete()) {
+    if (await AlertToConfirmDelete('¿Desea eliminar este producto?')) {
       removeProductFromCart(productId);
       AlertSuccess('Producto eliminado con éxito');
     } 
@@ -162,6 +162,20 @@ const addFunctionalityBtnsEditDelete = (cartItemHTML, quantity) => {
 
   btnEdit.addEventListener('click', () => editQuantityInCartHtml(cartItemHTML, productId, quantity));
   btnDelete.addEventListener('click', () => deleteItem(productId));
+}
+
+
+
+const addFunctionalityBtnCleanCart = () => {
+  const btnCleanCart = document.querySelector('.cart__delete-all-items-btn');
+  const cleanCart = async() => {
+    const message = `¿Desea eliminar todos los productos del carrito de compras?`;
+    if (await AlertToConfirmDelete(message)) {
+      removeAllProductsFromCart();
+    }
+  }
+
+  btnCleanCart.addEventListener('click', () => cleanCart());
 }
 
 
@@ -264,6 +278,12 @@ const CartHtml = () => {
   const cartContainerHTML = document.createElement("div");
   const contenido = `
       <h2 class="cart-title">Carrito de compras.</h2>
+      <div class="cart__delete-all-items">
+          <button class="btn cart__delete-all-items-btn " title="Borrar items del carrito de compras.">
+          <i class="fa-solid fa-trash"></i>
+              Limpiar carrito de compras.
+          </button>
+      </div>
       <ul class="cart__list" id="cart_list">
     
       </ul>
@@ -281,6 +301,8 @@ const CartHtml = () => {
   cartContainerHTML.innerHTML = contenido;
 
   mainHtml.appendChild(cartContainerHTML);
+
+  addFunctionalityBtnCleanCart();
 }
 
 

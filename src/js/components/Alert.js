@@ -65,11 +65,11 @@ export const CreateAlert = async (typeError, title = 'Alerta', message, timeInSe
   return await eventListenerBtnAlert(alertContainerHTML, typeError, timeInSeconds);
 }
 
-export const AlertToConfirmDelete = async () => {
+export const AlertToConfirmDelete = async (message) => {
   return await CreateAlert(
     'warning',
     'Alerta!',
-    `¿Desea eliminar este producto?`,
+    `${message}`,
     10
   );
 }
@@ -104,7 +104,7 @@ export const AlertSuccess = (message) =>
     'success',
     'Operacion Exitosa.',
     `${message}.`,
-    3
+    1
   );
 
 

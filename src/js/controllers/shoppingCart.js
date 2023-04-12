@@ -2,6 +2,7 @@ import { renderListItemCart } from "../components/ShoppingCart";
 import {
     addProductToCartLocalStorage,
     getProductCartLocalStorage,
+    removeAllProductsFromCartLocalStorage,
     removeProductFromCartLocalStorage,
     updateProductToCartLocalStorage
 } from "./LocalStorage";
@@ -63,4 +64,18 @@ export const removeProductFromCart = (id) => {
 const findCartProduct = async (productId) => {
     const productList = await getProductsCart();
     return productList.find(product => product.id === productId);
+}
+
+
+
+/**
+ * This function removes all products from the cart and updates the cart display.
+ */
+export const removeAllProductsFromCart = () => {
+    try {
+        removeAllProductsFromCartLocalStorage();
+        renderListItemCart();
+    } catch (error) {
+        throw new Error(`Error removeAllProductsFromCart: ${error.message}`);
+    }
 }

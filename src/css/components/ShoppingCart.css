@@ -52,6 +52,21 @@
     margin: .5rem 0;
 }
 
+
+.cart__delete-all-items {
+    display: flex;
+    justify-content: flex-end;
+    gap: .5rem;
+    width: 90%;
+}
+
+.cart__delete-all-items-btn {
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: .5rem 0;
+}
+
 .cart__list {
     display: flex;
     flex-direction: column;

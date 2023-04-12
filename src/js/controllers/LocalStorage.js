@@ -58,3 +58,11 @@ export const removeProductFromCartLocalStorage = (id) => {
     const cart = getProductCartLocalStorage().filter(item => item.id !== id);
     localStorage.setItem("cart", JSON.stringify(cart));
 };
+
+
+/**
+ * This function removes all products from the cart in local storage.
+ */
+export const removeAllProductsFromCartLocalStorage = () => {
+    localStorage.removeItem("cart");
+};
