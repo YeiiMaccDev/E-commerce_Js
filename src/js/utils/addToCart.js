@@ -1,3 +1,4 @@
+import { AlertSuccess } from "../components/Alert";
 import { addProductToCart } from "../controllers/shoppingCart";
 
 /**
@@ -8,6 +9,7 @@ import { addProductToCart } from "../controllers/shoppingCart";
 const addToCart = (btnAddToCart) => {
     const { productId } = btnAddToCart.dataset;
     addProductToCart(parseInt(productId));
+    AlertSuccess('Producto añadido al carrito de compras.');
 }
 
 
