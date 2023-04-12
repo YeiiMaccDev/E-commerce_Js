@@ -45,7 +45,7 @@ export const CreateAlert = async (typeError, title = 'Alerta', message, timeInSe
             <div class="alert-content alert-content-open">
             <button class="close-btn-top">X</button>
             <div class="alert-header">
-              <i class="fa-solid fa-${icons[typeError] ?? icons.warning} icon-alert"></i>
+              <i class="fa-solid fa-${icons[typeError] ?? icons.warning} icon-fa-${icons[typeError] ?? icons.warning} icon-alert"></i>
               <h3 class="alert-title">${title}</h3>
             </div>
             <div class="alert-body">
@@ -96,6 +96,15 @@ export const AlertForMinimumQuantity = (quantityMin = 1) =>
     'Cantidad mínima',
     `La cantidad mínima de un producto es de ${quantityMin} unidad(es).`,
     10
+  );
+
+
+export const AlertSuccess = (message) =>
+  CreateAlert(
+    'success',
+    'Operacion Exitosa.',
+    `${message}.`,
+    3
   );
 
 

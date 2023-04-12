@@ -3,7 +3,7 @@ import { getProductsCart, removeProductFromCart, updateProductToCart } from '../
 import { calculatePriceWithDiscount, calculatePriceWithQuantityDiscount, totalPrice } from '../utils/calculatePrice';
 
 import { formatPrice } from "../utils/formatterPrices";
-import { AlertForExceededQuantity, AlertForMinimumQuantity, AlertToConfirmDelete, AlertToConfirmUpdate } from './Alert';
+import { AlertForExceededQuantity, AlertForMinimumQuantity, AlertSuccess, AlertToConfirmDelete, AlertToConfirmUpdate } from './Alert';
 
 // Btn Shopping cart in menu.
 const btnCartHtml = document.querySelector('#cart-btn');
@@ -91,10 +91,11 @@ const addFunctionalityBtns = (quantityDiv, productId) => {
 
   const validateUpdate = async () => {
     const quantityUpdate = parseInt(quantityInput.value);
-    if ( validateQuantity(quantityUpdate) && await AlertToConfirmUpdate(quantityUpdate) ) {
-
-      updateProductToCart(productId, quantityUpdate);
-      
+    if ( validateQuantity(quantityUpdate)) {
+      if (await AlertToConfirmUpdate(quantityUpdate)) {
+        updateProductToCart(productId, quantityUpdate);
+        AlertSuccess('Producto actualizado con éxito');
+      }
     } else {
       quantityInput.value = quantityLimit;
     }
@@ -154,7 +155,8 @@ const addFunctionalityBtnsEditDelete = (cartItemHTML, quantity) => {
 
   const deleteItem = async (productId) => {
     if (await AlertToConfirmDelete()) {
-      removeProductFromCart(productId)
+      removeProductFromCart(productId);
+      AlertSuccess('Producto eliminado con éxito');
     } 
   }
 

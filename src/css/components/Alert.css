@@ -100,11 +100,11 @@
     animation: rotateIcon 3s ease-in-out infinite;
 }
 
-.fa-xmark {
+.icon-fa-xmark {
     background-color: #dc3545;
 }
 
-.fa-check {
+.icon-fa-check {
     background-color: #28a745;
 }
 
