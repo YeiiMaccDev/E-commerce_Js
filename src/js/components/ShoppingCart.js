@@ -3,6 +3,7 @@ import { getProductsCart, removeProductFromCart, updateProductToCart } from '../
 import { calculatePriceWithDiscount, calculatePriceWithQuantityDiscount, totalPrice } from '../utils/calculatePrice';
 
 import { formatPrice } from "../utils/formatterPrices";
+import { AlertForExceededQuantity, AlertForMinimumQuantity, AlertToConfirmDelete, AlertToConfirmUpdate } from './Alert';
 
 // Btn Shopping cart in menu.
 const btnCartHtml = document.querySelector('#cart-btn');
@@ -70,26 +71,38 @@ const addFunctionalityBtns = (quantityDiv, productId) => {
   const btnPlus = quantityDiv.querySelector('.btn-plus-item');
   const btnUpdate = quantityDiv.querySelector('.btn-update-item');
 
-  const updateQuantity = (amount, quantityLimit = 10) => {
-    const quantityTemp = parseInt(quantityInput.value) + amount;
-    if (quantityTemp >= 1 && quantityTemp <= quantityLimit) {
+  const quantityMin = 1;
+  const quantityLimit = 10;
+
+  const validateQuantity = (quantityTemp) => 
+    (quantityTemp < quantityMin) 
+      ? (AlertForMinimumQuantity(quantityMin), false)
+      : (quantityTemp > quantityLimit) 
+        ? (AlertForExceededQuantity(quantityLimit), false)
+        : true;   
+  
+
+  const updateQuantityInput = (amount) => {
+    const quantityTemp = parseInt(quantityInput.value) + amount;  
+    if (validateQuantity(quantityTemp)) {
       quantityInput.value = quantityTemp;
     }
   };
 
-  const validateUpdate = (quantityLimit = 10) => {
+  const validateUpdate = async () => {
     const quantityUpdate = parseInt(quantityInput.value);
-    if (quantityUpdate >= 1 && quantityUpdate <= quantityLimit) {
+    if ( validateQuantity(quantityUpdate) && await AlertToConfirmUpdate(quantityUpdate) ) {
+
       updateProductToCart(productId, quantityUpdate);
+      
     } else {
-      alert(`Por favor, ingrese solo dígitos numéricos entre 1 y ${quantityLimit}`);
-      quantityInput.value = 10;
+      quantityInput.value = quantityLimit;
     }
   };
 
-  btnMinus.addEventListener('click', () => updateQuantity(-1));
+  btnMinus.addEventListener('click', () => updateQuantityInput(-1));
 
-  btnPlus.addEventListener('click', () => updateQuantity(1));
+  btnPlus.addEventListener('click', () => updateQuantityInput(1));
 
   btnUpdate.addEventListener('click', () => validateUpdate());
 }
@@ -139,8 +152,14 @@ const addFunctionalityBtnsEditDelete = (cartItemHTML, quantity) => {
 
   const productId = parseInt(btnDelete.dataset.productId);
 
+  const deleteItem = async (productId) => {
+    if (await AlertToConfirmDelete()) {
+      removeProductFromCart(productId)
+    } 
+  }
+
   btnEdit.addEventListener('click', () => editQuantityInCartHtml(cartItemHTML, productId, quantity));
-  btnDelete.addEventListener('click', () => removeProductFromCart(productId));
+  btnDelete.addEventListener('click', () => deleteItem(productId));
 }
 
 
