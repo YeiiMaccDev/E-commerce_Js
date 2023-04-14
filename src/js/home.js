@@ -4,6 +4,8 @@ import { offerCountdown } from "./utils/offerCountdown.js";
 import { getProductList } from "./controllers/products";
 import { ListProducts } from "./components/ListProducts.js";
 import { saveProductsLocalStorage } from "./controllers/LocalStorage.js";
+import { findProductByCartegory } from "./services/products.js";
+import { renderSearchProducts } from "./components/SearchProducts.js";
 
 
 
@@ -106,6 +108,8 @@ const renderProducts = async () => {
         renderDiscountedProduct(discountedProductsDescendingList);
         renderAllProducts(productsList);
 
+        renderSearchProducts();
+        
 
         saveProductsLocalStorage(productsList);
 

@@ -22,6 +22,7 @@ const addFunctionality = (productHtml) => {
  */
 export const ListProducts = (productsList, productsDiv) => {
     try {
+        productsDiv.innerHTML = '';
         productsList.forEach(({ name, description, price, imageUrl, images, discount, id }) => {
             const productHtml = CardProductoHTML(name, description, price, imageUrl, images, discount, id);
             productsDiv.appendChild(productHtml);

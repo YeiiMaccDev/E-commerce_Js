@@ -35,3 +35,17 @@ export const findProductById = (id) => {
             .catch(error => reject(error));
     });
 };
+
+export const findProductByCartegory = (category = '') => {
+    let urlCategory = (category !== '') ? `${urlAPI}?category=${category}` : `${urlAPI}`
+    return new Promise((resolve, reject) => {
+        fetch(`${urlCategory}`)
+            .then(response => response.json())
+            .then(data => {
+                data.length === 0
+                    ? reject(new Error('No existe dato.'))
+                    : resolve(data)
+            })
+            .catch(error => reject(error));
+    });
+};
