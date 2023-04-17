@@ -47,16 +47,14 @@ const priceComponentHTML = (discount, price) => {
 export const CardProductoHTML = (name, description, price, imageUrl, images, discount, id) => {
     const cardProduct = document.createElement("div");
     const contenido = `
-    <a class="product__link" href="./producto.html?id=${id}" title="Ver detalles.">
-        <div class="product__image">
-            <img src="assets/img/productos/${imageUrl}/${images[0]}" loading="lazy"  width="250" height="250" alt="Imagen producto ${name}.">
-        </div>
-    </a>
+    <div class="product__image product__link show__product-details" data-product-id=${id} title="Ver detalles del producto.">
+        <img src="assets/img/productos/${imageUrl}/${images[0]}" loading="lazy"  width="250" height="250" alt="Imagen producto ${name}.">
+    </div>
     <div class="product__content">
-        <a class="product__link" href="./producto.html?id=${id}" title="Ver detalles.">
-            <h2 class="product__title"> ${name} </h2>
-            <p class="product__description"> ${description} </p>
-        </a>
+        <h2 class="product__title product__link show__product-details" data-product-id=${id} title="Ver detalles del producto.">
+            ${name} 
+        </h2>
+        <p class="product__description"> ${description} </p>
         <div class="product__prices">
             <div class="product__btn-discount">
                 ${discountComponentHTML(discount)}
