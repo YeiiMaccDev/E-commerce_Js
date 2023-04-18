@@ -1,4 +1,11 @@
 /**
+ * The function calculates the discount amount based on the given price and discount percentage.
+ * @param price - The original price of a product or service.
+ * @param discount - The discount of a product.
+ */
+export const calculatePriceDiscount = (price, discount) => (price * discount / 100);
+
+/**
  * The function calculates the price after applying a discount to the original price.
  * @param price - The original price of a product.
  * @param discount - The discount of a product.

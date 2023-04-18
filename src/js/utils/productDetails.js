@@ -1,9 +1,10 @@
 import { renderProductDetails } from "../components/ProductDetails";
 
 /**
- * The function adds a product to the cart when the "Add to Cart" button is clicked.
- * @param btnAddToCart - a button element that triggers the addToCart function when clicked 
- * and contains a dataset attribute called "productId".
+ * The function takes a link element and extracts the productId from its dataset to render the details
+ * of the corresponding product.
+ * @param link - The `link` parameter is a reference to an HTML element that has a `data-product-id`
+ * attribute. This attribute contains the ID of a product that needs to be rendered in more detail. 
  */
 const showDetails = (link) => {
     const { productId } = link.dataset;
@@ -12,10 +13,10 @@ const showDetails = (link) => {
 
 
 /**
- * This function adds an event listener to the "add-to-cart-button" 
- * and calls the addToCart function when clicked.
- * @param productoHTML - An HTML element that contains a product. 
- * The function adds an event listener to the "Add to Cart" button.
+ * This function adds event listeners to links with a specific class to show product details when
+ * clicked.
+ * @param productoHTML - It is a DOM element that represents a product in HTML format. The function
+ * adds event listeners to the "show details" links within the product element.
  */
 export const addEventListenerShowDetails = (productoHTML) => {
     const links = productoHTML.querySelectorAll('.show__product-details');
