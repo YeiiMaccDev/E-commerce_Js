@@ -1,4 +1,5 @@
 import { AlertSuccess } from "../components/Alert";
+import { renderListItemCart } from "../components/ShoppingCart";
 import { addProductToCart } from "../controllers/shoppingCart";
 
 /**
@@ -6,10 +7,13 @@ import { addProductToCart } from "../controllers/shoppingCart";
  * @param btnAddToCart - a button element that triggers the addToCart function when clicked 
  * and contains a dataset attribute called "productId".
  */
-const addToCart = (btnAddToCart, quantity = 1) => {
+const addToCart = async (btnAddToCart, quantity = 1) => {
     const { productId } = btnAddToCart.dataset;
-    addProductToCart(parseInt(productId), parseInt(quantity));
-    AlertSuccess('Producto añadido al carrito de compras.');
+    const addedProduct = await addProductToCart(parseInt(productId), parseInt(quantity));
+    if (addedProduct) {
+        renderListItemCart();
+        AlertSuccess('Producto añadido al carrito de compras.');
+    }
 }
 
 

@@ -1,3 +1,4 @@
+import { AlertForExceededQuantity, AlertToConfirmExceededQuantity } from "../components/Alert";
 import { renderListItemCart } from "../components/ShoppingCart";
 import {
     addProductToCartLocalStorage,
@@ -18,16 +19,38 @@ export const getProductsCart = async () => {
 }
 
 
-export const addProductToCart = async (id, quantity = 1) => {
+export const addProductToCart = async (id, quantity = 1, limit = 10) => {
     try {
         const product = await getProductById(id);
         const tempProduct = await findCartProduct(id);
-        
-        (tempProduct !== undefined) 
-            ? updateProductToCartLocalStorage(id, tempProduct.quantity + quantity)
-            : addProductToCartLocalStorage({ ...product, quantity })
-            
-        renderListItemCart();     
+
+        if (tempProduct) {
+            const currentQuantity = tempProduct.quantity;
+            const remainingQuantity = limit - currentQuantity;
+
+            if (currentQuantity == limit) {
+                const message = `${currentQuantity} unidades del producto ya se encuentran en el carrito. La cantidad máxima de un producto por pedido es de ${limit} unidades.`;
+                AlertToConfirmExceededQuantity(message);
+                return false;
+            } else if (currentQuantity + quantity > limit) {
+                const message = `La cantidad máxima de un producto por pedido es de ${limit} unidades. 
+                                En el carrito ya se encuentran ${currentQuantity} unidades del producto.  
+                                ¿Desea agregar ${remainingQuantity} unidades más al carrito? `;
+
+                const confirmed = await AlertToConfirmExceededQuantity(message);
+
+                return (confirmed)
+                    ? updateProductToCartLocalStorage(id, currentQuantity + remainingQuantity)
+                    : false
+
+            }
+
+            return updateProductToCartLocalStorage(id, currentQuantity + quantity);
+
+        }
+
+        return addProductToCartLocalStorage({ ...product, quantity });
+
     } catch (error) {
         throw new Error(`Error addProductToCart: ${error.message}`);
     }
@@ -36,8 +59,8 @@ export const addProductToCart = async (id, quantity = 1) => {
 
 export const updateProductToCart = (id, quantity) => {
     try {
-        updateProductToCartLocalStorage(id, quantity);  
-        renderListItemCart();    
+        updateProductToCartLocalStorage(id, quantity);
+        renderListItemCart();
     } catch (error) {
         throw new Error(`Error updateProductToCart: ${error.message}`);
     }

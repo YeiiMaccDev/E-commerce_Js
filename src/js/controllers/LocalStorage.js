@@ -4,14 +4,14 @@
  * @param productsList - an array of objects representing a list of products. 
  */
 export const saveProductsLocalStorage = (productsList) => {
-    localStorage.setItem("products", JSON.stringify(productsList) );
+    localStorage.setItem("products", JSON.stringify(productsList));
 }
 
 
 /**
  * This function retrieves products from local storage or returns an empty array if there are none.
  */
-export const getProductsLocalStorage = () => JSON.parse( localStorage.getItem("products")) || [];
+export const getProductsLocalStorage = () => JSON.parse(localStorage.getItem("products")) || [];
 
 
 
@@ -29,8 +29,15 @@ export const getProductCartLocalStorage = () => JSON.parse(localStorage.getItem(
  * @param product - The product parameter is an object.
  */
 export const addProductToCartLocalStorage = (product) => {
-    const cart = getProductCartLocalStorage();
-    localStorage.setItem("cart", JSON.stringify([...cart, product]));
+    try {
+        const cart = getProductCartLocalStorage();
+        localStorage.setItem("cart", JSON.stringify([...cart, product]));
+        return true;
+    } catch (error) {
+        console.error("Error adding product to cart LocalStorage:", error);
+        return false;
+    }
+
 };
 
 
@@ -40,14 +47,20 @@ export const addProductToCartLocalStorage = (product) => {
  * @param quantity - The updated quantity of a product in the cart.
  */
 export const updateProductToCartLocalStorage = (id, quantity) => {
-    const cart = getProductCartLocalStorage();
-    const updatedCart = cart.map(item => {
-        if (item.id === id) {
-            return { ...item, quantity };
-        }
-        return item;
-    });
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    try {
+        const cart = getProductCartLocalStorage();
+        const updatedCart = cart.map(item => {
+            if (item.id === id) {
+                return { ...item, quantity };
+            }
+            return item;
+        });
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        return true;
+    } catch (error) {
+        console.error("Error updating product to cart LocalStorage:", error);
+        return false;
+    }
 };
 
 /**

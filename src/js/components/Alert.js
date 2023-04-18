@@ -108,3 +108,12 @@ export const AlertSuccess = (message) =>
   );
 
 
+
+  export const AlertToConfirmExceededQuantity = async (message) => {
+    return await CreateAlert(
+      'warning',
+      'Alerta!',
+      `${message}`,
+      50
+    );
+  }
