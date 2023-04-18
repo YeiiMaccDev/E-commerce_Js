@@ -120,9 +120,9 @@ const quantitySelectHtml = (quantity, limit = 10) => {
     }
 
     const select = document.createElement('select');
-    select.id = 'cantidad';
+    select.id = 'form-quantity-select';
     select.classList.add('product-details__form-quantity-select');
-    select.name = 'cantidad';
+    select.name = 'quantity';
 
     const qty = Math.min(quantity, limit);
 
@@ -191,7 +191,7 @@ const ProductDetailsCardHtml = ({ id, category, reference, name, imageUrl, image
                        ${isAvailableHtml(quantity)}
 
                         <div class="product-details__form-quantity">
-                            <label for="cantidad" class="product-details__form-quantity-label">
+                            <label for="quantity" class="product-details__form-quantity-label">
                                 <i class="fa-solid fa-hashtag"></i>
                                 Cantidad:
                             </label>
