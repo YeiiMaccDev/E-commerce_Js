@@ -25,8 +25,8 @@ const addFunctionality = (productHtml) => {
 export const ListProducts = (productsList, productsDiv) => {
     try {
         productsDiv.innerHTML = '';
-        productsList.forEach(({ name, description, price, imageUrl, images, discount, id }) => {
-            const productHtml = CardProductoHTML(name, description, price, imageUrl, images, discount, id);
+        productsList.forEach(({ name, description, price, images, discount, _id }) => {
+            const productHtml = CardProductoHTML(name, description, price, images, discount, _id);
             productsDiv.appendChild(productHtml);
             
             addFunctionality(productHtml);

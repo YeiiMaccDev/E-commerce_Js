@@ -82,23 +82,23 @@ const finalPricesHtml = (price, discount) => {
 }
 
 /**
- * The function checks if a quantity is greater than zero and returns a boolean value.
- * @param quantity - It represents the quantity of  a certain item that is being checked for availability.
+ * The function checks if a stock is greater than zero and returns a boolean value.
+ * @param stock - It represents the stock of  a certain item that is being checked for availability.
  * @returns returns a boolean value.
  */
-const isAvailable = (quantity) => quantity > 0
+const isAvailable = (stock) => stock > 0
 
 
 /**
  * The function returns a string indicating whether a product is available or not, and if there are
  * more units on the way.
- * @param quantity - The quantity parameter represents the number of units of a product that are
+ * @param stock - The stock parameter represents the number of units of a product that are
  * currently available in stock.
  * @returns The function `isAvailableHtml` returns an HTML string that displays whether a product is
- * available or not based on the quantity parameter passed to it.
+ * available or not based on the stock parameter passed to it.
  */
-const isAvailableHtml = (quantity) => {
-    return isAvailable(quantity)
+const isAvailableHtml = (stock) => {
+    return isAvailable(stock)
         ? `<p> <i class="fa-solid fa-check"></i> Disponible. </p>`
         : `<p> <i class="fa-solid fa-xmark"></i> No disponible. </p>
             <p> <i class="fa-solid fa-truck-fast"></i> Hay más unidades en camino. </p> `
@@ -106,16 +106,16 @@ const isAvailableHtml = (quantity) => {
 
 
 /**
- * This function generates HTML code for a select element with options for selecting a quantity,
+ * This function generates HTML code for a select element with options for selecting a stock,
  * limited by a maximum value.
- * @param quantity - The available quantity of a product.
- * @param [limit=10] - The limit parameter is an optional parameter that sets the maximum quantity that
+ * @param stock - The available stock of a product.
+ * @param [limit=10] - The limit parameter is an optional parameter that sets the maximum stock that
  * can be selected in the dropdown menu.
  * @returns The function `quantitySelectHtml` returns an HTML string that creates a select element with
- * options for selecting a quantity of a product. 
+ * options for selecting a stock of a product. 
  */
-const quantitySelectHtml = (quantity, limit = 10) => {
-    if (!isAvailable(quantity)) {
+const quantitySelectHtml = (stock, limit = 10) => {
+    if (!isAvailable(stock)) {
         return '0';
     }
 
@@ -124,7 +124,7 @@ const quantitySelectHtml = (quantity, limit = 10) => {
     select.classList.add('product-details__form-quantity-select');
     select.name = 'quantity';
 
-    const qty = Math.min(quantity, limit);
+    const qty = Math.min(stock, limit);
 
     for (let i = 1; i <= qty; i++) {
         const option = document.createElement('option');
@@ -137,7 +137,7 @@ const quantitySelectHtml = (quantity, limit = 10) => {
 };
 
 
-const ProductDetailsCardHtml = ({ id, category, reference, name, imageUrl, images, price, quantity, discount, description }) => {
+const ProductDetailsCardHtml = ({ _id : id, category, reference, name, images, price, stock, discount, description }) => {
     const sectionProductDetailsHtml = document.querySelector(".product-details");
 
     const productDetailsCardHTML = document.createElement("div");
@@ -155,14 +155,14 @@ const ProductDetailsCardHtml = ({ id, category, reference, name, imageUrl, image
 
         <div class="product-details__banner">
             <div class="product-details__images">
-                <img src="assets/img/productos/${imageUrl}/${images[0]}" class="product-details__image-primary"
+                <img src="${images[0]}" class="product-details__image-primary"
                 width="350" height="350" alt="Imagen principal producto ${name}.">
                 <div class="product-details__images-secondary">
-                    <img src="assets/img/productos/${imageUrl}/${images[0]}" class="product-details__image-secondary"
+                    <img src="${images[0]}" class="product-details__image-secondary"
                         width="100" height="100" alt="Imagen producto ${name}.">
-                    <img src="assets/img/productos/${imageUrl}/${images[1]}" class="product-details__image-secondary"
+                    <img src="${images[1]}" class="product-details__image-secondary"
                         width="100" height="100" alt="Imagen producto ${name}.">
-                    <img src="assets/img/productos/${imageUrl}/${images[2]}" class="product-details__image-secondary"
+                    <img src="${images[2]}" class="product-details__image-secondary"
                         width="100" height="100" alt="Imagen producto ${name}.">
                 </div>
             </div>
@@ -179,7 +179,7 @@ const ProductDetailsCardHtml = ({ id, category, reference, name, imageUrl, image
                         <hr>
                         <p> - Categoria: <strong> ${category} </strong></p>
                         <p> - Referencia: <strong> ${reference} </strong></p>
-                        <p> - Cantidad disponible: <strong>  ${quantity}  </strong> unidades </p>
+                        <p> - Cantidad disponible: <strong>  ${stock}  </strong> unidades </p>
 
                     </div>
 
@@ -188,14 +188,14 @@ const ProductDetailsCardHtml = ({ id, category, reference, name, imageUrl, image
                         <p> <i class="fa-solid fa-truck"></i> Costo de envío: <strong> ${formatPrice(25000)} </strong> </p>
                         <p> <i class="fa-solid fa-truck-fast"></i> Envío rápido: <strong> ${formatPrice(40000)} </strong> </p>
 
-                       ${isAvailableHtml(quantity)}
+                       ${isAvailableHtml(stock)}
 
                         <div class="product-details__form-quantity">
                             <label for="quantity" class="product-details__form-quantity-label">
                                 <i class="fa-solid fa-hashtag"></i>
                                 Cantidad:
                             </label>
-                            ${quantitySelectHtml(quantity)}
+                            ${quantitySelectHtml(stock)}
                         </div>
 
                         <div class="product-details__buttons">
@@ -203,7 +203,7 @@ const ProductDetailsCardHtml = ({ id, category, reference, name, imageUrl, image
                                 <i class="fa-regular fa-star icon-favorite"></i>
                             </button>
                             <button class="btn btn-primary-color add-to-cart-button" data-product-id=${id} 
-                                ${!isAvailable(quantity) ? 'disabled' : ''}>
+                                ${!isAvailable(stock) ? 'disabled' : ''}>
                                 Añadir al carrito
                             </button>
                         </div>

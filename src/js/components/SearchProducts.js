@@ -1,27 +1,14 @@
-import { getProductByCartegory, getProductList } from "../controllers/products";
+import { getProductByCartegory, getProductList, getProductsByQuery } from "../controllers/products";
 import { ListProducts } from "./ListProducts";
 
 const productsDiv = document.querySelector("[data-products]")
 const productsSectionDiv = document.querySelector("#productos")
-let cont = 0;
-
-const isMatch = (data, query) => {
-    console.log(`${cont}:`, data, data.toLowerCase().includes(query.toLowerCase()))
-    cont++
-    return data.toLowerCase().includes(query.toLowerCase())
-}
 
 const renderSearchProductsForm = async (query = 'i5') => {
     productsSectionDiv.scrollIntoView();
 
-    const productsList = await getProductList();
-
-    const filteredProductsList = productsList.filter(({ name, description, category }) => {
-        return (isMatch(name, query) || isMatch(description, query) || isMatch(category, query))
-    });
-
-    console.log('Lista final:', filteredProductsList);
-    ListProducts(filteredProductsList, productsDiv);
+    const productsList = await getProductsByQuery(query);
+    ListProducts(productsList, productsDiv);
 }
 
 const searchProductsForm = async () => {
@@ -46,7 +33,7 @@ const searchProductsForm = async () => {
         clearTimeout(timer);
         timer = setTimeout(() => {
             renderSearchProductsForm(inputSearch.value);
-        }, 5000);
+        }, 8000);
     });  
 
 }

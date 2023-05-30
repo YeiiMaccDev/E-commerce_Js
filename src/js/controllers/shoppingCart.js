@@ -21,7 +21,7 @@ export const getProductsCart = async () => {
 
 export const addProductToCart = async (id, quantity = 1, limit = 10) => {
     try {
-        const product = await getProductById(id);
+        const {name, price, images, discount, stock} = await getProductById(id);
         const tempProduct = await findCartProduct(id);
 
         if (tempProduct) {
@@ -48,8 +48,7 @@ export const addProductToCart = async (id, quantity = 1, limit = 10) => {
             return updateProductToCartLocalStorage(id, currentQuantity + quantity);
 
         }
-
-        return addProductToCartLocalStorage({ ...product, quantity });
+        return addProductToCartLocalStorage({id, name, price, images, discount, stock, quantity });
 
     } catch (error) {
         throw new Error(`Error addProductToCart: ${error.message}`);

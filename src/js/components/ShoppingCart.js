@@ -13,8 +13,7 @@ const btnCartHtml = document.querySelector('#cart-btn');
  * The CartItemHTML function creates and returns an HTML element for a cart item. 
  * @param name - The name of the product.
  * @param price - The price of the item.
- * @param imageUrl - The URL path to the folder where the product images are stored.
- * @param images - The images parameter is an array of strings that contains the names of the images
+ * @param images - The images parameter is an array of strings that contains the urls of the images
  * associated with the product.
  * @param discount - The discount applied to the product, expressed in integers (e.g. 20 for a 20% discount).
  * @param quantity - The quantity represents the number of items of the product in the cart.
@@ -22,10 +21,10 @@ const btnCartHtml = document.querySelector('#cart-btn');
  * @returns The function `CartItemHTML` returns an HTML element (`li`) that represents a product item
  * in a shopping cart.
  */
-const CartItemHTML = (name, price, imageUrl, images, discount, quantity, id) => {
+const CartItemHTML = (name, price, images, discount, quantity, id) => {
   const itemHTML = document.createElement("li");
   const contenido = `
-        <img src="assets/img/productos/${imageUrl}/${images[0]} " class="cart__list-item-img" loading="lazy"  width="70" height="70" alt="Imagen producto ${name}.">
+        <img src="${images[0]} " class="cart__list-item-img" loading="lazy"  width="70" height="70" alt="Imagen producto ${name}.">
         <div class="cart__list-item-content">
           <h3 class="cart__list-item-title"> ${name} </h2>
             <div class="cart__list-item-datails">
@@ -151,7 +150,7 @@ const addFunctionalityBtnsEditDelete = (cartItemHTML, quantity) => {
   const btnEdit = cartItemHTML.querySelector('.edit');
   const btnDelete = cartItemHTML.querySelector('.delete');
 
-  const productId = parseInt(btnDelete.dataset.productId);
+  const productId = btnDelete.dataset.productId;
 
   const deleteItem = async (productId) => {
     if (await AlertToConfirmDelete('¿Desea eliminar este producto?')) {
@@ -188,8 +187,8 @@ const addFunctionalityBtnCleanCart = () => {
  */
 const ListItemCart = (productsList, cartListHtml) => {
   try {
-    productsList.forEach(({ name, price, imageUrl, images, discount, quantity, id }) => {
-      const cartItemHTML = CartItemHTML(name, price, imageUrl, images, discount, quantity, id);
+    productsList.forEach(({ name, price, images, discount, quantity, id }) => {
+      const cartItemHTML = CartItemHTML(name, price, images, discount, quantity, id);
       cartListHtml.appendChild(cartItemHTML);
 
       addFunctionalityBtnsEditDelete(cartItemHTML, quantity);

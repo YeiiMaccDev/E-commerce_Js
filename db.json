@@ -23,7 +23,8 @@
       "quantity": 100,
       "discount": 0,
       "description": "El portátil gaming Victus by HP tiene todo lo que necesita para jugar y gestionar tus tareas diarias respetando el medio ambiente gracias a los materiales reciclados de origen oceánico y plástico posconsumo, que lo integran. Manten la temperatura ideal en cada juego con el sistema de refrigeración mejorado y lleva tu experiencia de juego más allá controlando ajustes de rendimiento, opciones de iluminación y más gracias a OMEN Gaming Hub. Perfecto para los gamers orgullosos!"
-    },{
+    },
+    {
       "id": 3,
       "category": "computadoras",
       "reference": "82RB00P9LM",
@@ -74,7 +75,7 @@
     {
       "id": 7,
       "category": "celulares",
-      "reference": "iPhone-13",
+      "reference": "AP039EL0PBH9KLCO",
       "name": "iPhone 13.",
       "imageUrl": "celulares/iPhone-13",
       "images":["1.jpg", "2.jpg", "3.jpg"],
@@ -86,9 +87,9 @@
     {
       "id": 8,
       "category": "celulares",
-      "reference": "Galaxy-A22",
+      "reference": "SM-A226BLGILTC",
       "name": "SAMSUNG Galaxy A22.",
-      "imageUrl": "celulares/Galaxy-A22",
+      "imageUrl": "celulares/SM-A226BLGILTC",
       "images":["1.jpg", "2.jpg", "3.jpg"],
       "price": "1399090",
       "quantity": 100,
@@ -98,9 +99,9 @@
     {
       "id": 9,
       "category": "celulares",
-      "reference": "MOTOROLA-G22",
+      "reference": "MO087EL1FQAAVLCO",
       "name": "MOTOROLA G22.",
-      "imageUrl": "celulares/MOTOROLA-G22",
+      "imageUrl": "celulares/MO087EL1FQAAVLCO",
       "images":["1.jpg", "2.jpg", "3.jpg"],
       "price": "1199900",
       "quantity": 100,
@@ -110,9 +111,9 @@
     {
       "id": 10,
       "category": "celulares",
-      "reference": "OPPO-A57",
+      "reference": "OP229EL0U8WF3LCO",
       "name": "OPPO A57.",
-      "imageUrl": "celulares/OPPO-A57",
+      "imageUrl": "celulares/OP229EL0U8WF3LCO",
       "images":["1.jpg", "2.jpg", "3.jpg"],
       "price": "932900",
       "quantity": 100,

@@ -9,7 +9,7 @@ import { addProductToCart } from "../controllers/shoppingCart";
  */
 const addToCart = async (btnAddToCart, quantity = 1) => {
     const { productId } = btnAddToCart.dataset;
-    const addedProduct = await addProductToCart(parseInt(productId), parseInt(quantity));
+    const addedProduct = await addProductToCart(productId, parseInt(quantity));
     if (addedProduct) {
         renderListItemCart();
         AlertSuccess('Producto añadido al carrito de compras.');

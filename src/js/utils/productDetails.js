@@ -8,7 +8,7 @@ import { renderProductDetails } from "../components/ProductDetails";
  */
 const showDetails = (link) => {
     const { productId } = link.dataset;
-    renderProductDetails(parseInt(productId));
+    renderProductDetails(productId);
 }
 
 

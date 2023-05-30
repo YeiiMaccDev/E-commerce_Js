@@ -1,9 +1,6 @@
 /* Constant containing the API URL. */
-// url local 'db.json' with 'npm run server'
-const urlAPIlocal = `http://localhost:3000/products`;
-
-// url server online 'db.json' with 'My JSON SERVER' - 'https://my-json-server.typicode.com'
-const urlAPI = `https://my-json-server.typicode.com/YeiiMaccDev/ecommerce_data/products`;
+// url server API - 'https://github.com/YeiiMaccDev/API_Eccomerce_Node.git'
+const urlAPI = `https://api-eccomerce-node.vercel.app/api`;
 
 /**
  * It returns a promise that resolves to the data returned from the API call after 5 seconds.
@@ -11,7 +8,7 @@ const urlAPI = `https://my-json-server.typicode.com/YeiiMaccDev/ecommerce_data/p
  */
 export const getAllProducts = () => {
     return new Promise((resolve, reject) => {
-        fetch(urlAPI)
+        fetch(`${urlAPI}/products`)
             .then(response => response.json())
             .then(data => {
                 data.length === 0
@@ -25,7 +22,7 @@ export const getAllProducts = () => {
 
 export const findProductById = (id) => {
     return new Promise((resolve, reject) => {
-        fetch(`${urlAPI}/${id}`)
+        fetch(`${urlAPI}/products/${id}`)
             .then(response => response.json())
             .then(data => {
                 data.length === 0
@@ -36,8 +33,23 @@ export const findProductById = (id) => {
     });
 };
 
-export const findProductByCartegory = (category = '') => {
-    let urlCategory = (category !== '') ? `${urlAPI}?category=${category}` : `${urlAPI}`
+
+export const findProductsByQuery = (query = '') => {
+    let urlSearch = (query !== '') ? `${urlAPI}/search/products/${query}` : `${urlAPI}/products`
+    return new Promise((resolve, reject) => {
+        fetch(`${urlSearch}`)
+            .then(response => response.json())
+            .then(data => {
+                data.length === 0
+                    ? reject(new Error('No existen datos.'))
+                    : resolve(data)
+            })
+            .catch(error => reject(error));
+    });
+};
+
+export const findProductByCategory = (category = '') => {
+    let urlCategory = (category !== '') ? `${urlAPI}/search/productsByCategory/${category}` : `${urlAPI}/products`
     return new Promise((resolve, reject) => {
         fetch(`${urlCategory}`)
             .then(response => response.json())
